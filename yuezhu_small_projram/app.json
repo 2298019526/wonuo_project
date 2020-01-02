@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/helpList/helpList",
+    "pages/helpInput/helpInput",
+    "pages/previewphoto/previewphoto",
+    "pages/helpDetail/helpDetail",
+    "pages/myPage/myPage",
+    "pages/helpConfirmed/helpConfirmed",
+    "pages/myGetHelp/myGetHelp",
+    "pages/myToHelp/myToHelp"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "悦助",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#666666",
+    "selectedColor": "#FF5722",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tabIcon/toHelp1.png",
+        "selectedIconPath": "images/tabIcon/toHelp.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/helpInput/helpInput",
+        "iconPath": "images/tabIcon/getHelp1.png",
+        "selectedIconPath": "images/tabIcon/getHelp.png",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/myPage/myPage",
+        "iconPath": "images/tabIcon/me1.png",
+        "selectedIconPath": "images/tabIcon/me.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
+}

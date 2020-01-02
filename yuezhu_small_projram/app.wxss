@@ -1,0 +1,9 @@
+page{
+    height: 100%;
+}
+.theme{
+  background-color: #FF5722;
+}
+.theme-active{
+  background-color: #BF360C;
+}
