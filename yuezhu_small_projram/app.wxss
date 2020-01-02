@@ -1,9 +1,13 @@
+@import "/style/iconfont.wxss";
 page{
     height: 100%;
 }
 .theme{
-  background-color: #FF5722;
+  background-color: #e9524b;
 }
 .theme-active{
   background-color: #BF360C;
+}
+.theme-second{
+  background-color: #FF6666;
 }
