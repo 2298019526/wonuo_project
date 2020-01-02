@@ -1,2 +1,40 @@
 <!--pages/index/index.wxml-->
-<text>pages/index/index.wxml</text>
+<!-- 占位背景 -->
+<view class="background-container"></view>
+<!-- 占位背景 -->
+<!-- 搜索 -->
+<view class="search-container">
+  <view class="search-content">
+    <i class="iconfont iconsearch1"></i> 搜索
+  </view>
+</view>
+<!-- 搜索 -->
+<!-- 轮播图 -->
+<view class="banner-container">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular class="banner-content">
+    <block wx:for="{{bannerData}}">
+      <swiper-item>
+        <image src="{{item.image}}" data-index='{{index}}' class="banner-item" data-link="{{item.linkUrl}}" bindtap='toGuangGao' />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!-- 轮播图 -->
+
+<!-- 今日之星 -->
+<view class="today-container">
+  <view class="line-container">
+    <view class="left-title">今日之星</view>
+    <navigator class="right-content">更多<i class="iconfont iconarrow-right"></i></navigator>
+  </view>
+  <view class="today-content">
+    <view class="user-item" wx:for="{{todayData}}">
+      <view class="user-head">
+        <image src="{{item.headUrl}}"></image>
+      </view>
+      <view class="user-name">{{item.nickName}}</view>
+      <view class="user-detail">完成{{item.completeCount}}件</view>
+    </view>
+  </view>
+</view>
+<!-- 今日之星 -->

@@ -5,7 +5,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    indicatorDots: false,
+    autoplay: true,
+    interval: 5000,
+    duration: 1000,
+    bannerData: [
+      {image: "../../images/banner/01.jpg",linkUrl:""},
+      {image: "../../images/banner/02.jpg",linkUrl:""},
+      {image: "../../images/banner/03.jpg",linkUrl:""}
+    ],
+    todayData: [
+      {headUrl: "../../images/head/01.jpg",nickName: "测试一",completeCount: 12},
+      {headUrl: "../../images/head/02.jpg",nickName: "测试二",completeCount: 11},
+      {headUrl: "../../images/head/03.jpg",nickName: "测试三",completeCount: 9},
+      {headUrl: "../../images/head/04.jpg",nickName: "测试四",completeCount: 6},
+      {headUrl: "../../images/head/05.jpg",nickName: "测试五",completeCount: 5}
+    ]
   },
 
   /**

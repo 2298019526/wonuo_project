@@ -1,1 +1,118 @@
 /* pages/index/index.wxss */
+.background-container{
+  width: 100%;
+  height: 300rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: linear-gradient(to bottom, #e9524b , #FF6666);
+}
+/* 公共样式 */
+.line-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.line-container .left-title{
+  font-size: #333333;
+  font-size: 42rpx;
+  font-weight: 600;
+}
+.line-container .right-content{
+  color: #666666;
+  font-size: 32rpx;
+}
+/* 公共样式 */
+
+/* 搜索 */
+.search-container{
+  width: 100%;
+  padding: 20rpx;
+}
+.search-container .search-content{
+  width: 100%;
+  height: 60rpx;
+  border-radius: 30rpx;
+  background-color: rgba(255,255,255,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+}
+.search-container .search-content i{
+  margin-right: 10rpx;
+}
+/* 搜索 */
+
+/* 轮播图 */
+.banner-container{
+  width: 100%;
+  padding: 0px 10px;
+}
+.banner-container .banner-content{
+  width:100%;
+  height:250rpx;
+  border-radius:10rpx;
+  margin-top:20rpx;
+  overflow:hidden;
+}
+.banner-container .banner-content .banner-item{
+  width:100%;
+  height:100%;
+}
+/* 轮播图 */
+
+/* 今日之星 */
+.today-container{
+  width: 100%;
+  padding: 0rpx 20rpx;
+  padding-top: 40rpx;
+}
+.today-content{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20rpx 10rpx;
+}
+.user-item{
+  flex-shrink: 0;
+  width: 130rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0rpx 9rpx;
+}
+.user-head{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  text-align: center;
+}
+.user-head image{
+  width: 100%;
+  height: 100%;
+}
+.user-name{
+  width: 100%;
+  font-size: 26rpx;
+  color: #333;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 45rpx;
+}
+.user-detail{
+  width: 100%;
+  font-size: 23rpx;
+  color: #c4c4c4;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 30rpx;
+}
+/* 今日之星 */
