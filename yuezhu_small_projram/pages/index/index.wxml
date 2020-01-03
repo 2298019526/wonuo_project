@@ -4,6 +4,10 @@
 <!-- 占位背景 -->
 <!-- 搜索 -->
 <view class="search-container">
+  <view class="location-content">
+    <i class="iconfont iconmap1"></i>
+    <text>{{currentCity}}</text>
+  </view>
   <view class="search-content">
     <i class="iconfont iconsearch1"></i> 搜索
   </view>

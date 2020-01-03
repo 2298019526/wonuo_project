@@ -1,4 +1,15 @@
 // pages/index/index.js
+//引入app实例
+const app = getApp();
+//引入腾讯位置服务api
+const QQMapWX = require("../../utils/qqmap-wx-jssdk.min.js");
+//引入路由模块
+const routeList = require("../../utils/router.js");
+//实例化API核心类
+const demo = new QQMapWX({
+  key: routeList.mapKey // 必填
+});
+
 Page({
 
   /**
@@ -20,14 +31,15 @@ Page({
       {headUrl: "../../images/head/03.jpg",nickName: "测试三",completeCount: 9},
       {headUrl: "../../images/head/04.jpg",nickName: "测试四",completeCount: 6},
       {headUrl: "../../images/head/05.jpg",nickName: "测试五",completeCount: 5}
-    ]
+    ],
+    currentCity: "" //当前城市
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getCurrentLocation();
   },
 
   /**
@@ -77,5 +89,58 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  
+  //获取当前的定位信息
+  getCurrentLocation: function(){
+    let that = this;
+    wx.getLocation({
+      type: "gcj02", //返回可以用于wx.openLocation的经纬度
+      success: function (res) {
+        //console.log(res);
+        let latitude = res.latitude;
+        let longitude = res.longitude;
+        app.globalData.point = {
+          long: Number(res.longitude),
+          lat: Number(res.latitude)
+        }
+        that.getLocationAddress(longitude, latitude);
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '定位失败',
+          icon: 'warn'
+        })
+        that.setData({
+          currentCity: "定位失败"
+        });
+      }
+    });
+  },
+  getLocationAddress: function(long,lat){
+    let that = this;
+
+    // 调用接口, 坐标转具体位置 -xxz0717
+    demo.reverseGeocoder({
+      location: {
+        latitude: Number(lat),
+        longitude: Number(long)
+      },
+      success: function (res) {
+        //console.log("地址解析返回值：",res);
+        that.setData({
+          currentCity: res.result.address_component.city
+        });
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '定位失败',
+          icon: 'warn'
+        })
+        that.setData({
+          currentCity: "定位失败"
+        });
+      }
+    });
   }
 })

@@ -1,7 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
-    console.log("Lezhu app start");
+    
   },
   //全局登录函数
   getUserInfo:function(cb){
@@ -24,7 +24,8 @@ App({
   },
   //保存用户信息
   globalData:{
-    userInfo:null
+    userInfo:null,
+    point: null
   },
   mockHelpList:[
     {
