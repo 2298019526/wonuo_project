@@ -2,6 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/mine/mine",
+    "pages/todayRank/index",
+    "pages/nearbyTask/index",
     "pages/helpList/helpList",
     "pages/helpInput/helpInput",
     "pages/previewphoto/previewphoto",
@@ -43,6 +45,5 @@
       }
     ]
   },
-  "debug": true,
   "sitemapLocation": "sitemap.json"
 }

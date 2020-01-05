@@ -131,3 +131,87 @@
   line-height: 30rpx;
 }
 /* 今日之星 */
+
+/* 附近悬赏 */
+.nearBy-container{
+  width: 100%;
+  padding: 20rpx;
+}
+.nearby-content{
+  width: 100%;
+}
+.nearby-content .reward-item{
+  width: 100%;
+  border-bottom: 1rpx solid #f6f6f6;
+  position: relative;
+  padding: 20rpx 10rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nearby-content .active{
+  background-color: #ddd;
+}
+.nearby-content .reward-item .reward-head{
+  width: 100rpx;
+  height: 100rpx;
+  flex-shrink: 0;
+  margin-right: 10rpx;
+}
+.nearby-content .reward-item .reward-head image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.nearby-content .reward-item .reward-content{
+  flex: 1;
+  color: #666666;
+  width: calc(100% - 110rpx);
+}
+.nearby-content .reward-item .reward-title{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.nearby-content .reward-item .reward-title .reward-title-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 34rpx;
+  color: #333333;
+}
+.nearby-content .reward-item .reward-title .reward-money{
+  flex-shrink: 0;
+  height: 46rpx;
+  line-height: 46rpx;
+  padding: 0rpx 15rpx;
+  background-color: #e9524b;
+  color: #ffffff;
+  font-size: 28rpx;
+  border-radius: 20rpx;
+  margin-left: 10rpx;
+}
+.nearby-content .reward-item .reward-datetime{
+    width: 100%;
+    font-size: 28rpx;
+}
+.nearby-content .reward-item .reward-address{
+  color: #999999;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+}
+.nearby-content .reward-item .reward-address .reward-address-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nearby-content .reward-item .reward-address .reward-address-cut{
+  padding: 0rpx 20rpx;
+  flex-shrink: 0;
+}
+.nearby-content .reward-item .reward-address .reward-address-distance{
+  flex-shrink: 0;
+}
+/* 附近悬赏 */

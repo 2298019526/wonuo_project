@@ -32,14 +32,63 @@ Page({
       {headUrl: "../../images/head/04.jpg",nickName: "测试四",completeCount: 6},
       {headUrl: "../../images/head/05.jpg",nickName: "测试五",completeCount: 5}
     ],
-    currentCity: "" //当前城市
+    currentCity: "", //当前城市
+    rewardData: [ //附近悬赏数据
+      // {
+      //   id: 1,
+      //   userNickName: "测试测试",
+      //   userHeadImg: "../../images/head/01.jpg",
+      //   eventTitle: "求帮取快递，有特别的奖励哦哦哦哦哦哦哦哦水电费噶是的发噶啥地方",
+      //   eventReward: "120",
+      //   eventReleaseTime: "2020-01-01 10:10:01",
+      //   eventLong: "29.452304",
+      //   eventLat: "106.531677",
+      //   eventAddress: "重庆市巴南区红光大道",
+      //   eventDistance: "100"
+      // },{
+      //   id: 2,
+      //   userNickName: "水电费",
+      //   userHeadImg: "../../images/head/02.jpg",
+      //   eventTitle: "求陪同打球",
+      //   eventReward: "100",
+      //   eventReleaseTime: "2020-01-01 10:10:01",
+      //   eventLong: "29.452304",
+      //   eventLat: "106.531677",
+      //   eventAddress: "重庆市巴南区红光大道",
+      //   eventDistance: "150"
+      // },{
+      //   id: 3,
+      //   userNickName: "对方告诉对方",
+      //   userHeadImg: "../../images/head/03.jpg",
+      //   eventTitle: "送文件",
+      //   eventReward: "160",
+      //   eventReleaseTime: "2020-01-02 10:10:01",
+      //   eventLong: "29.452304",
+      //   eventLat: "106.531677",
+      //   eventAddress: "重庆市巴南区红光大道",
+      //   eventDistance: "200"
+      // },{
+      //   id: 4,
+      //   userNickName: "胜多负少",
+      //   userHeadImg: "../../images/head/04.jpg",
+      //   eventTitle: "介绍靠谱的租房",
+      //   eventReward: "100",
+      //   eventReleaseTime: "2020-01-01 10:10:01",
+      //   eventLong: "29.452304",
+      //   eventLat: "106.531677",
+      //   eventAddress: "重庆市巴南区红光大道第23号接到的深V时代付款即可决胜巅峰",
+      //   eventDistance: "400"
+      // }
+    ],
+    page: 1 //附近悬赏页码
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getCurrentLocation();
+    let that = this;
+    that.getCurrentLocation();
   },
 
   /**
@@ -81,13 +130,60 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    let page = this.data.page + 1;
+    this.getNearbyReward(page);
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+
+  },
+
+  //获取附近悬赏
+  getNearbyReward: function(page){
+    let that = this;
+    
+    wx.showLoading({
+      title: '加载中...',
+    })
+    wx.request({
+      url: routeList.getIndexEvents, //仅为示例，并非真实的接口地址
+      data: {
+        page: page,
+        pageSize: 10,
+        long: app.globalData.point.long,
+        lat: app.globalData.point.lat
+      },
+      complete: function(){
+        wx.hideLoading();
+      },
+      success (res) {
+        console.log("返回值",res);
+        if(res.data.code==0){
+          let newData = res.data.data;
+          if(newData.length>0){
+            let rewardData = that.data.rewardData.concat(newData);
+            that.setData({
+              rewardData: rewardData,
+              page: page
+            })
+          }else{
+            wx.showToast({
+              title: '没有更多了',
+              icon: 'none'
+            })
+          }
+        }else{
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none'
+          })
+        }
+        console.log("附近悬赏返回值",res.data);
+      }
+    })
 
   },
   
@@ -104,6 +200,8 @@ Page({
           long: Number(res.longitude),
           lat: Number(res.latitude)
         }
+        
+        that.getNearbyReward(that.data.page);
         that.getLocationAddress(longitude, latitude);
       },
       fail: function (res) {
