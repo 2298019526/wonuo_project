@@ -4,6 +4,7 @@
     "pages/mine/mine",
     "pages/todayRank/index",
     "pages/nearbyTask/index",
+    "pages/search/index",
     "pages/helpList/helpList",
     "pages/helpInput/helpInput",
     "pages/previewphoto/previewphoto",

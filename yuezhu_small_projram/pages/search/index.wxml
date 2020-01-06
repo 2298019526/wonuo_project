@@ -1,0 +1,38 @@
+<!--pages/search/index.wxml-->
+<!--搜索框-->
+<view class="search-container">
+  <view class="search-input">
+    <input value='{{searchKey}}' placeholder="请输入搜索内容" type="text" bindtap='searchFoucs' bindinput="searchInput" bindconfirm="searchConfirm" focus="{{autoFocus}}" />
+  </view>
+  <view class="search-button" hover-class="button-active" bindtap="searchConfirm">搜索</view>
+</view>
+<!--搜索框-->
+
+<!-- 搜索条件 -->
+<view class="condition-container">
+  <!-- 搜索历史 -->
+  <view class="history-container">
+    <view class="line-container">
+      <view class="left-title">搜索历史</view>
+      <view class="right-content" bindtap="clearHistory">清除历史</view>
+    </view>
+    <view class="history-content">
+      <view class="history-item" wx:for="{{historyList}}">{{item}}</view>
+    </view>
+  </view>
+  <!-- 搜索历史 -->
+  <!-- 搜索标签 -->
+  <view class="type-container">
+    <view class="line-container">
+      <view class="left-title">搜索标签</view>
+    </view>
+  </view>
+  <!-- 搜索标签 -->
+</view>
+<!-- 搜索条件 -->
+
+<!-- 搜索结果列表 -->
+<view class="result-container">
+
+</view>
+<!-- 搜索结果列表 -->

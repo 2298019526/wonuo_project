@@ -141,6 +141,13 @@ Page({
 
   },
 
+  //去往搜索页面
+  toSearch: function(){
+    wx.navigateTo({
+      url: '../search/index',
+    })
+  },
+
   //获取附近悬赏
   getNearbyReward: function(page){
     let that = this;

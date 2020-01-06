@@ -8,7 +8,7 @@
     <i class="iconfont iconmap1"></i>
     <text>{{currentCity}}</text>
   </view>
-  <view class="search-content">
+  <view class="search-content" bindtap="toSearch">
     <i class="iconfont iconsearch1"></i> 搜索
   </view>
 </view>
