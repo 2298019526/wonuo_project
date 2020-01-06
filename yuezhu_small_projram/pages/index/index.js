@@ -148,6 +148,32 @@ Page({
     })
   },
 
+  //获取今日之星数据
+  getTodayStarRank: function(){
+    let that = this;
+    wx.request({
+      url: routeList.getTodayStarRank, //仅为示例，并非真实的接口地址
+      data: {
+
+      },
+      success (res) {
+        console.log("今日之星返回值",res);
+        if(res.data.code==0){
+          let rankList = res.data.data.splice(0,5);
+          that.setData({
+            todayData: rankList
+          })
+        }else{
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none'
+          })
+        }
+      }
+    })
+
+  },
+
   //获取附近悬赏
   getNearbyReward: function(page){
     let that = this;
@@ -247,5 +273,7 @@ Page({
         });
       }
     });
-  }
+  },
+
+
 })

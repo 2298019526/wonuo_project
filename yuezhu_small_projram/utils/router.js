@@ -1,6 +1,8 @@
 const domain = "http://127.0.0.1/yuezhu_admin/public/index.php/index"; //域名
 //路由列表
 const routeList = {
+  //获取今日之星排行
+  getTodayStarRank: domain + '/index/getTodayStarRank',
   //获取首页的附近悬赏数据
   getIndexEvents: domain + '/index/getIndexEvents',
   //搜索页查询接口
