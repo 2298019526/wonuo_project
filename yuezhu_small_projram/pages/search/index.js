@@ -1,4 +1,10 @@
 // pages/search/index.js
+const app = getApp();
+//引入腾讯位置服务api
+const QQMapWX = require("../../utils/qqmap-wx-jssdk.min.js");
+//引入路由模块
+const routeList = require("../../utils/router.js");
+
 Page({
 
   /**
@@ -79,6 +85,21 @@ Page({
       return false;
     }
     that.addCache(value);
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: routeList.searchAllEvent,
+      data: {
+
+      },
+      complete: function(){
+        wx.hideLoading();
+      },
+      success: function(res){
+        console.log("搜索返回值",res);
+      }
+    })
   },
 
   //添加缓存
