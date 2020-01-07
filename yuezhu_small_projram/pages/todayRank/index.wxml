@@ -1,2 +1,57 @@
 <!--pages/todayRank/index.wxml-->
-<text>pages/todayRank/index.wxml</text>
+<!-- 头部 -->
+<view class="header-container">
+  <view class="header-item">
+    <view class="header-image">
+      <image src="{{rankingList[1].user_head}}"></image>
+      <view class="rank-label" style="background-color: #D3D3D3;">2</view>
+    </view>
+    <view class="header-detail">
+      <view class="user-name">{{rankingList[1].user_name}}</view>
+      <view class="user-detail">完成{{rankingList[1].receive_reward}}件</view>
+    </view>
+  </view>
+  <view class="header-item header-center">
+    <view class="header-image">
+      <image src="{{rankingList[0].user_head}}"></image>
+      <view class="rank-label" style="background-color: #FFD700;">1</view>
+    </view>
+    <view class="header-detail">
+      <view class="user-name">{{rankingList[0].user_name}}</view>
+      <view class="user-detail">完成{{rankingList[0].receive_reward}}件</view>
+    </view>
+    </view>
+  <view class="header-item">
+    <view class="header-image">
+      <image src="{{rankingList[2].user_head}}"></image>
+      <view class="rank-label" style="background-color: #E69966;">3</view>
+    </view>
+    <view class="header-detail">
+      <view class="user-name">{{rankingList[2].user_name}}</view>
+      <view class="user-detail">完成{{rankingList[2].receive_reward}}件</view>
+    </view>
+  </view>
+</view>
+<!-- 头部 -->
+<!-- 主体 -->
+<view class="ranking-container">
+  <block wx:if="{{rankingList.length>0}}">
+    <view class="ranking-item" wx:for="{{rankingList}}">
+      <view class="ranking-number">
+        <view class="ranking-first" wx:if="{{index==0}}">{{index+1}}</view>
+        <view class="ranking-second" wx:elif="{{index==1}}">{{index+1}}</view>
+        <view class="ranking-third" wx:elif="{{index==2}}">{{index+1}}</view>
+        <view class="ranking-num" wx:else>{{index+1}}</view>
+      </view>
+      <view class="ranking-head">
+        <image src="{{item.user_head}}"></image>
+      </view>
+      <view class="ranking-name">{{item.user_name}}</view>
+      <view class="ranking-detail">完成{{item.receive_reward}}件</view>
+    </view>
+  </block>
+  <block wx:elif="{{rankingList.length==0}}">
+  
+  </block>
+</view>
+<!-- 主体 -->

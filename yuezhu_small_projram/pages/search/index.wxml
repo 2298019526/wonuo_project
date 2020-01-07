@@ -9,7 +9,7 @@
 <!--搜索框-->
 
 <!-- 搜索条件 -->
-<view class="condition-container">
+<view class="condition-container" hidden="{{!searchStatus}}">
   <!-- 搜索历史 -->
   <view class="history-container">
     <view class="line-container">
@@ -17,7 +17,7 @@
       <view class="right-content" bindtap="clearHistory">清除历史</view>
     </view>
     <view class="history-content">
-      <view class="history-item" wx:for="{{historyList}}">{{item}}</view>
+      <view wx:for="{{historyList}}" class="history-item" hover-class="item-active" data-key="{{item}}" bindtap="historyClick">{{item}}</view>
     </view>
   </view>
   <!-- 搜索历史 -->
@@ -26,13 +26,53 @@
     <view class="line-container">
       <view class="left-title">搜索标签</view>
     </view>
+    <view class="type-content">
+      <view wx:for="{{typeList}}" class="type-item" hover-class="item-active" data-id="{{item.id}}" data-key="{{item.label_name}}" bindtap="typeClick"># {{item.label_name}}</view>
+    </view>
   </view>
   <!-- 搜索标签 -->
 </view>
 <!-- 搜索条件 -->
 
 <!-- 搜索结果列表 -->
-<view class="result-container">
-
+<view class="result-container" hidden="{{searchStatus}}">
+    <view class="line-container">
+      <view class="left-title">搜索结果</view>
+    </view>
+    <view class="result-content">
+      <block wx:if="{{rewardList.length==0}}">
+        <view class="not-find">
+          <view class="not-find-image">
+            <image mode="widthFix" src="../../images/no_data.jpg"></image>
+          </view>
+          <view class="not-find-text">未查询到数据哦</view>
+        </view>
+      </block>
+      <block wx: if="{{rewardList.length>0}}">
+        <view class="reward-item" wx:for="{{rewardList}}" data-id="{{item.event_id}}}" bindtap="eventClick" hover-class="active">
+          <view class="reward-head">
+            <image src="{{item.event_user_head}}"></image>
+          </view>
+          <view class="reward-content">
+            <view class="reward-title">
+              <view class="reward-title-text">{{item.event_title}}</view>
+              <view class="reward-money"><i class="iconfont iconconsumption"></i> {{item.event_reward}}</view>
+            </view>
+            <view class="reward-datetime">
+              发布时间：{{item.event_release_time}}
+            </view>
+            <view class="reward-address">
+              <view class="reward-address-text">{{item.event_address}}</view>
+              <view class="reward-address-cut">|</view>
+              <view class="reward-address-distance">
+                <i class="iconfont iconmap"></i>
+                {{item.event_distance}}m
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+      
+    </view>
 </view>
 <!-- 搜索结果列表 -->

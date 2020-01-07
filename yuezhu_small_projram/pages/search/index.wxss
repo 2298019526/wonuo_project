@@ -74,6 +74,9 @@
   margin-top: 20rpx;
   border-radius: 6rpx;
 }
+.history-container .history-content .item-active{
+  background-color: #ddd;
+}
   /* 历史搜索 */
   /* 搜索标签 */
 .type-container{
@@ -81,5 +84,128 @@
   padding: 20rpx;
   padding-top: 0;
 }
+.type-container .type-content{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 20rpx;
+}
+.type-container .type-content .type-item{
+  color: #999999;
+  width: 50%;
+  text-align: left;
+  font-size: 28rpx;
+  line-height: 60rpx;
+}
+.type-container .type-content .item-active{
+  text-decoration: underline;
+}
   /* 搜索标签 */
 /* 搜索条件 */
+
+/* 搜索结果 */
+.result-container{
+  padding: 20rpx;
+}
+.result-content{
+  width: 100%;
+}
+.result-content .reward-item{
+  width: 100%;
+  border-bottom: 1rpx solid #f6f6f6;
+  position: relative;
+  padding: 20rpx 10rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.result-content .active{
+  background-color: #ddd;
+}
+.result-content .reward-item .reward-head{
+  width: 100rpx;
+  height: 100rpx;
+  flex-shrink: 0;
+  margin-right: 10rpx;
+}
+.result-content .reward-item .reward-head image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.result-content .reward-item .reward-content{
+  flex: 1;
+  color: #666666;
+  width: calc(100% - 110rpx);
+}
+.result-content .reward-item .reward-title{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.result-content .reward-item .reward-title .reward-title-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 34rpx;
+  color: #333333;
+}
+.result-content .reward-item .reward-title .reward-money{
+  flex-shrink: 0;
+  height: 46rpx;
+  line-height: 46rpx;
+  padding: 0rpx 15rpx;
+  background-color: #e9524b;
+  color: #ffffff;
+  font-size: 28rpx;
+  border-radius: 20rpx;
+  margin-left: 10rpx;
+}
+.result-content .reward-item .reward-datetime{
+    width: 100%;
+    font-size: 28rpx;
+}
+.result-content .reward-item .reward-address{
+  color: #999999;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+}
+.result-content .reward-item .reward-address .reward-address-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.result-content .reward-item .reward-address .reward-address-cut{
+  padding: 0rpx 20rpx;
+  flex-shrink: 0;
+}
+.result-content .reward-item .reward-address .reward-address-distance{
+  flex-shrink: 0;
+}
+/* 搜索结果 */
+
+/* 无数据 */
+.not-find{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.not-find .not-find-image{
+  width: 375rpx;
+  margin: 20rpx;
+}
+.not-find .not-find-image image{
+  width: 100%;
+}
+.not-find .not-find-text{
+  font-size: 28rpx;
+  color: #999999;
+  text-align: center;
+}
+/* 无数据 */

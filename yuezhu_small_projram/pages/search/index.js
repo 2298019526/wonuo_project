@@ -11,10 +11,21 @@ Page({
    * 页面的初始数据
    */
   data: {
+    searchStatus: true,
     searchKey:"", //设置搜索框的值
     searchValue: "", //输入框的值
     autoFocus: false, //
-    historyList: []
+    historyList: [],
+    typeList: [
+      { id: 1, label_name: "送文件" },
+      { id: 2, label_name: "取快递" },
+      { id: 3, label_name: "代买物品" },
+      { id: 4, label_name: "陪练" },
+      { id: 5, label_name: "组团旅游" },
+      { id: 6, label_name: "租房" },
+      { id: 7, label_name: "取快递" }
+    ],
+    rewardList: []
   },
 
   /**
@@ -74,6 +85,11 @@ Page({
     that.setData({
       searchValue: value
     })
+    if(value.length==0){
+      that.setData({
+        searchStatus: true
+      })
+    }
   },
 
   //确认搜索事件
@@ -95,11 +111,24 @@ Page({
       },
       complete: function(){
         wx.hideLoading();
+        that.setData({
+          searchStatus: false
+        })
       },
       success: function(res){
         console.log("搜索返回值",res);
       }
     })
+  },
+
+  //历史点击事件
+  historyClick: function(e){
+    let key = e.currentTarget.dataset.key;
+    this.setData({
+      searchKey: key,
+      searchValue: key
+    })
+    this.searchConfirm();
   },
 
   //添加缓存
@@ -134,5 +163,22 @@ Page({
 
     wx.setStorageSync('searchHistoryList', []);
     this.getCacheToHistory();
+  },
+
+  //搜索标签点击事件
+  typeClick: function(e){
+    let id = e.currentTarget.dataset.id;
+    let key = e.currentTarget.dataset.key;
+
+    this.setData({
+      searchKey: key,
+      searchValue: key
+    })
+    this.searchConfirm();
+  },
+
+  //悬赏事件点击事件
+  eventClick: function(e){
+
   }
 })
