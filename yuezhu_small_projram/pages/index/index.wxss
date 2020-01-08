@@ -139,6 +139,7 @@
 }
 .nearby-content{
   width: 100%;
+  margin-top: 20rpx;
 }
 .nearby-content .reward-item{
   width: 100%;
@@ -215,3 +216,24 @@
   flex-shrink: 0;
 }
 /* 附近悬赏 */
+/* 无数据 */
+.not-find{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.not-find .not-find-image{
+  width: 375rpx;
+  margin: 20rpx;
+}
+.not-find .not-find-image image{
+  width: 100%;
+}
+.not-find .not-find-text{
+  font-size: 28rpx;
+  color: #999999;
+  text-align: center;
+}
+/* 无数据 */

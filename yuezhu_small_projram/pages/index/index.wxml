@@ -47,31 +47,41 @@
 <view class="nearBy-container">
   <view class="line-container">
     <view class="left-title">附近悬赏</view>
-    <navigator url="../nearbyTask/index" class="right-content">更多<i class="iconfont iconarrow-right"></i></navigator>
+    <navigator url="../rewardOverview/index" class="right-content">更多<i class="iconfont iconarrow-right"></i></navigator>
   </view>
   <view class="nearby-content">
-    <view class="reward-item" wx:for="{{rewardData}}" data-id="{{item.event_id}}}" bindtap="eventClick" hover-class="active">
-      <view class="reward-head">
-        <image src="{{item.event_user_head}}"></image>
-      </view>
-      <view class="reward-content">
-        <view class="reward-title">
-          <view class="reward-title-text">{{item.event_title}}</view>
-          <view class="reward-money"><i class="iconfont iconconsumption"></i> {{item.event_reward}}</view>
+    <block wx:if="{{rewardData.length>0}}">
+      <view class="reward-item" wx:for="{{rewardData}}" data-id="{{item.event_id}}}" bindtap="eventClick" hover-class="active">
+        <view class="reward-head">
+          <image src="{{item.event_user_head}}"></image>
         </view>
-        <view class="reward-datetime">
-          发布时间：{{item.event_release_time}}
-        </view>
-        <view class="reward-address">
-          <view class="reward-address-text">{{item.event_address}}</view>
-          <view class="reward-address-cut">|</view>
-          <view class="reward-address-distance">
-            <i class="iconfont iconmap"></i>
-            {{item.event_distance}}m
+        <view class="reward-content">
+          <view class="reward-title">
+            <view class="reward-title-text">{{item.event_title}}</view>
+            <view class="reward-money"><i class="iconfont iconconsumption"></i> {{item.event_reward}}</view>
+          </view>
+          <view class="reward-datetime">
+            发布时间：{{item.event_release_time}}
+          </view>
+          <view class="reward-address">
+            <view class="reward-address-text">{{item.event_address}}</view>
+            <view class="reward-address-cut">|</view>
+            <view class="reward-address-distance">
+              <i class="iconfont iconmap"></i>
+              {{item.event_distance}}m
+            </view>
           </view>
         </view>
       </view>
-    </view>
+    </block>
+    <block wx:if="{{rewardData.length==0}}">
+      <view class="not-find">
+        <view class="not-find-image">
+          <image mode="widthFix" src="../../images/no_data.jpg"></image>
+        </view>
+        <view class="not-find-text">暂无数据</view>
+      </view>
+    </block>
   </view>
 </view>
 <!-- 附近悬赏 -->

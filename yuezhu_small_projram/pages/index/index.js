@@ -34,51 +34,51 @@ Page({
     ],
     currentCity: "", //当前城市
     rewardData: [ //附近悬赏数据
-      // {
-      //   id: 1,
-      //   userNickName: "测试测试",
-      //   userHeadImg: "../../images/head/01.jpg",
-      //   eventTitle: "求帮取快递，有特别的奖励哦哦哦哦哦哦哦哦水电费噶是的发噶啥地方",
-      //   eventReward: "120",
-      //   eventReleaseTime: "2020-01-01 10:10:01",
-      //   eventLong: "29.452304",
-      //   eventLat: "106.531677",
-      //   eventAddress: "重庆市巴南区红光大道",
-      //   eventDistance: "100"
-      // },{
-      //   id: 2,
-      //   userNickName: "水电费",
-      //   userHeadImg: "../../images/head/02.jpg",
-      //   eventTitle: "求陪同打球",
-      //   eventReward: "100",
-      //   eventReleaseTime: "2020-01-01 10:10:01",
-      //   eventLong: "29.452304",
-      //   eventLat: "106.531677",
-      //   eventAddress: "重庆市巴南区红光大道",
-      //   eventDistance: "150"
-      // },{
-      //   id: 3,
-      //   userNickName: "对方告诉对方",
-      //   userHeadImg: "../../images/head/03.jpg",
-      //   eventTitle: "送文件",
-      //   eventReward: "160",
-      //   eventReleaseTime: "2020-01-02 10:10:01",
-      //   eventLong: "29.452304",
-      //   eventLat: "106.531677",
-      //   eventAddress: "重庆市巴南区红光大道",
-      //   eventDistance: "200"
-      // },{
-      //   id: 4,
-      //   userNickName: "胜多负少",
-      //   userHeadImg: "../../images/head/04.jpg",
-      //   eventTitle: "介绍靠谱的租房",
-      //   eventReward: "100",
-      //   eventReleaseTime: "2020-01-01 10:10:01",
-      //   eventLong: "29.452304",
-      //   eventLat: "106.531677",
-      //   eventAddress: "重庆市巴南区红光大道第23号接到的深V时代付款即可决胜巅峰",
-      //   eventDistance: "400"
-      // }
+      {
+        id: 1,
+        userNickName: "测试测试",
+        event_user_head: "../../images/head/01.jpg",
+        event_title: "求帮取快递，有特别的奖励哦哦哦哦哦哦哦哦水电费噶是的发噶啥地方",
+        event_reward: "120",
+        event_release_time: "2020-01-01 10:10:01",
+        eventLong: "29.452304",
+        eventLat: "106.531677",
+        event_address: "重庆市巴南区红光大道",
+        event_distance: "100"
+      },{
+        id: 2,
+        userNickName: "水电费",
+        event_user_head: "../../images/head/02.jpg",
+        event_title: "求陪同打球",
+        event_reward: "100",
+        event_release_time: "2020-01-01 10:10:01",
+        eventLong: "29.452304",
+        eventLat: "106.531677",
+        event_address: "重庆市巴南区红光大道",
+        event_distance: "150"
+      },{
+        id: 3,
+        userNickName: "对方告诉对方",
+        event_user_head: "../../images/head/03.jpg",
+        event_title: "送文件",
+        event_reward: "160",
+        event_release_time: "2020-01-02 10:10:01",
+        eventLong: "29.452304",
+        eventLat: "106.531677",
+        event_address: "重庆市巴南区红光大道",
+        event_distance: "200"
+      },{
+        id: 4,
+        userNickName: "胜多负少",
+        event_user_head: "../../images/head/04.jpg",
+        event_title: "介绍靠谱的租房",
+        event_reward: "100",
+        event_release_time: "2020-01-01 10:10:01",
+        eventLong: "29.452304",
+        eventLat: "106.531677",
+        event_address: "重庆市巴南区红光大道第23号接到的深V时代付款即可决胜巅峰",
+        event_distance: "400"
+      }
     ],
     page: 1 //附近悬赏页码
   },
@@ -240,7 +240,7 @@ Page({
       fail: function (res) {
         wx.showToast({
           title: '定位失败',
-          icon: 'warn'
+          icon: 'none'
         })
         that.setData({
           currentCity: "定位失败"
@@ -266,7 +266,7 @@ Page({
       fail: function (res) {
         wx.showToast({
           title: '定位失败',
-          icon: 'warn'
+          icon: 'none'
         })
         that.setData({
           currentCity: "定位失败"
@@ -275,5 +275,13 @@ Page({
     });
   },
 
+  //事件点击事件
+  eventClick: function(e){
+    let that = this;
+    let eventId = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../eventDetail/index?event_id=' + eventId,
+    })
+  }
 
 })

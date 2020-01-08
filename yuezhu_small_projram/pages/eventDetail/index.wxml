@@ -1,0 +1,29 @@
+<!--pages/eventDetail/index.wxml-->
+<!-- 用户信息 -->
+<view class="user-container">
+  <view class="user-content">
+    <view class="user-head">
+      <image src="{{userInfo.user_head}}"></image>
+    </view>
+    <view class="user-detail">
+      <view class="user-name">{{userInfo.user_name}}</view>
+      <view class=""></view>
+    </view>
+  </view>
+</view>
+<!-- 用户信息 -->
+<!-- 地图位置 -->
+<view class="map-container">
+  <map id="map" longitude="{{centerPoint.long}}" latitude="{{centerPoint.lat}}" scale="{{scale}}" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location show-scale style="width: 100%; height: 100%;">
+    <cover-view class="map-control">
+      <cover-view class="location-control" hover-class="active" hover-stay-time="100" bindtap="getMyLocation">
+        <cover-image src="../../images/getlocation.png"></cover-image>
+      </cover-view>
+      <cover-view class="zoom-control">
+        <cover-view class="zoom-item" hover-class="active" hover-stay-time="100" bindtap="zoomChange" data-type="0">+</cover-view>
+        <cover-view class="zoom-item" hover-class="active" hover-stay-time="100" bindtap="zoomChange" data-type="1">-</cover-view>
+      </cover-view>
+    </cover-view>
+  </map>
+</view>
+<!-- 地图位置 -->

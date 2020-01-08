@@ -1,0 +1,151 @@
+/* pages/nearbyTask/index.wxss */
+/* 标签导航 */
+.nav-container{
+  width: 100%;
+  padding: 0rpx 20rpx;
+}
+.nav-container .nav-content{
+  overflow-x:auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.nav-container .nav-content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+.nav-container .nav-item{
+  flex-shrink: 0;
+  padding: 0 20rpx;
+}
+.nav-container .item-block{
+  font-size: 32rpx;
+  height: 80rpx;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.nav-container .item-active{
+  color: #e9524b;
+}
+.nav-container .item-text{
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.nav-container .item-underline{
+  width: 0;
+  height: 6rpx;
+  transition: all 0.2s;
+  border-radius: 3rpx;
+  background-color: #e9524b;
+}
+.nav-container .underline-active{
+  width: 100%;
+}
+/* 标签导航 */
+
+/* 主体内容 */
+.main-container{
+  width: 100%;
+  padding: 20rpx;
+}
+.main-container .reward-item{
+  width: 100%;
+  border-bottom: 1rpx solid #f6f6f6;
+  position: relative;
+  padding: 20rpx 10rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-container .active{
+  background-color: #ddd;
+}
+.main-container .reward-item .reward-head{
+  width: 100rpx;
+  height: 100rpx;
+  flex-shrink: 0;
+  margin-right: 10rpx;
+}
+.main-container .reward-item .reward-head image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.main-container .reward-item .reward-content{
+  flex: 1;
+  color: #666666;
+  width: calc(100% - 110rpx);
+}
+.main-container .reward-item .reward-title{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.main-container .reward-item .reward-title .reward-title-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 34rpx;
+  color: #333333;
+}
+.main-container .reward-item .reward-title .reward-money{
+  flex-shrink: 0;
+  height: 46rpx;
+  line-height: 46rpx;
+  padding: 0rpx 15rpx;
+  background-color: #e9524b;
+  color: #ffffff;
+  font-size: 28rpx;
+  border-radius: 20rpx;
+  margin-left: 10rpx;
+}
+.main-container .reward-item .reward-datetime{
+    width: 100%;
+    font-size: 28rpx;
+}
+.main-container .reward-item .reward-address{
+  color: #999999;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+}
+.main-container .reward-item .reward-address .reward-address-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.main-container .reward-item .reward-address .reward-address-cut{
+  padding: 0rpx 20rpx;
+  flex-shrink: 0;
+}
+.main-container .reward-item .reward-address .reward-address-distance{
+  flex-shrink: 0;
+}
+/* 主体内容 */
+/* 无数据 */
+.not-find{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.not-find .not-find-image{
+  width: 375rpx;
+  margin: 20rpx;
+}
+.not-find .not-find-image image{
+  width: 100%;
+}
+.not-find .not-find-text{
+  font-size: 28rpx;
+  color: #999999;
+  text-align: center;
+}
+/* 无数据 */

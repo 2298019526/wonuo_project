@@ -8,7 +8,7 @@
     </view>
     <view class="header-detail">
       <view class="user-name">{{rankingList[1].user_name}}</view>
-      <view class="user-detail">完成{{rankingList[1].receive_reward}}件</view>
+      <view class="user-detail">完成{{rankingList[1].receive_reward>0?rankingList[1].receive_reward:0}}件</view>
     </view>
   </view>
   <view class="header-item header-center">
@@ -18,7 +18,7 @@
     </view>
     <view class="header-detail">
       <view class="user-name">{{rankingList[0].user_name}}</view>
-      <view class="user-detail">完成{{rankingList[0].receive_reward}}件</view>
+      <view class="user-detail">完成{{rankingList[0].receive_reward>0?rankingList[0].receive_reward:0}}件</view>
     </view>
     </view>
   <view class="header-item">
@@ -28,13 +28,14 @@
     </view>
     <view class="header-detail">
       <view class="user-name">{{rankingList[2].user_name}}</view>
-      <view class="user-detail">完成{{rankingList[2].receive_reward}}件</view>
+      <view class="user-detail">完成{{rankingList[2].receive_reward>0?rankingList[2].receive_reward:0}}件</view>
     </view>
   </view>
 </view>
 <!-- 头部 -->
 <!-- 主体 -->
 <view class="ranking-container">
+  <view class="ranking-title">悬赏完结排行</view>
   <block wx:if="{{rankingList.length>0}}">
     <view class="ranking-item" wx:for="{{rankingList}}">
       <view class="ranking-number">
@@ -51,7 +52,12 @@
     </view>
   </block>
   <block wx:elif="{{rankingList.length==0}}">
-  
+    <view class="not-find">
+      <view class="not-find-image">
+        <image mode="widthFix" src="../../images/no_data.jpg"></image>
+      </view>
+      <view class="not-find-text">暂无数据</view>
+    </view>
   </block>
 </view>
 <!-- 主体 -->

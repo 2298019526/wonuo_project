@@ -1,11 +1,34 @@
-// pages/nearbyTask/index.js
+// pages/eventDetail/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userInfo:{
+      user_id: 1,
+      user_name: "九月",
+      user_head: "../../images/head/01.jpg",
+      user_sex: 1,
+      user_phone: "18090261577",
+      event_release: "16",
+      event_received: "10"
+    },
+    markers: [{
+      iconPath: "../../images/map-location.png",
+      id: 0,
+      latitude: 29.598237,
+      longitude: 106.498718,
+      width: 30,
+      height: 32
+    }],
+    controls: [],
+    scale: 14, //缩放级别，取值范围为3-20
+    locationPoint: {},
+    centerPoint: {
+      long: 106.498718,
+      lat: 29.598237
+    }
   },
 
   /**
