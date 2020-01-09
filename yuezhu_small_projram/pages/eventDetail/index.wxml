@@ -6,13 +6,74 @@
       <image src="{{userInfo.user_head}}"></image>
     </view>
     <view class="user-detail">
-      <view class="user-name">{{userInfo.user_name}}</view>
-      <view class=""></view>
+      <view class="user-name">
+        <view class="user-name-text">{{userInfo.user_name}}</view>
+        <view class="user-level">
+          <view class="level-item" wx:if="{{userInfo.user_level==1}}">
+            <view class="level-icon first"><i class="iconfont icondengji"></i></view>
+            <view class="level-text first">黄金</view>
+          </view>
+          <view class="level-item" wx:if="{{userInfo.user_level==2}}">
+            <view class="level-icon second"><i class="iconfont icondengji"></i></view>
+            <view class="level-text second">白银</view>
+          </view>
+          <view class="level-item" wx:if="{{userInfo.user_level==3}}">
+            <view class="level-icon third"><i class="iconfont icondengji"></i></view>
+            <view class="level-text third">青铜</view>
+          </view>
+        </view>
+      </view>
+      <view class="reward-detail">
+        <view class="reward-release">
+          <i class="iconfont iconfabu"></i>
+          已发布4件
+        </view>
+        <view class="reward-end">
+          <i class="iconfont iconwancheng"></i>
+          完结3件
+        </view>
+      </view>
     </view>
   </view>
 </view>
 <!-- 用户信息 -->
+<!-- 悬赏详情 -->
+<view class="line-container">
+  <view class="line-right"></view>
+  <view class="line-title">悬赏详情</view>
+</view>
+<view class="reward-container">
+  <view class="reward-title">{{rewardDetail.event_title}}</view>
+  <view class="reward-label"></view>
+  <view class="reward-describe">{{rewardDetail.event_describe}}</view>
+  <view class="reward-datetime">
+    <i class="iconfont iconclock"></i>
+    <text>{{rewardDetail.event_release_time}}</text>
+  </view>
+  <view class="reward-phone" hover-class="active" bindtap="callPhone" data-phone="{{rewardDetail.event_contact}}">
+    <view>
+      <i class="iconfont icondianhua"></i>
+      <text>{{rewardDetail.event_contact}}</text>
+    </view>
+    <view class="phone-right">{{rewardDetail.event_contacts}}</view>
+  </view>
+  <view class="reward-address" hover-class="active" bindtap="showEventLocation">
+    <view>
+      <i class="iconfont iconmap1"></i>
+      <text>{{rewardDetail.event_address}}</text>
+    </view>
+    <view>
+      {{rewardDetail.event_distance}}m
+      <i class="iconfont iconarrow-right"></i>
+    </view>
+  </view>
+</view>
+<!-- 悬赏详情 -->
 <!-- 地图位置 -->
+<view class="line-container">
+  <view class="line-right"></view>
+  <view class="line-title">地图位置</view>
+</view>
 <view class="map-container">
   <map id="map" longitude="{{centerPoint.long}}" latitude="{{centerPoint.lat}}" scale="{{scale}}" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location show-scale style="width: 100%; height: 100%;">
     <cover-view class="map-control">
@@ -27,3 +88,47 @@
   </map>
 </view>
 <!-- 地图位置 -->
+
+<!-- 相关推荐 -->
+<view class="line-container">
+  <view class="line-right"></view>
+  <view class="line-title">相关推荐</view>
+</view>
+<view class="recommend-container">
+  <view class="reward-item" wx:for="{{recommendData}}" data-id="{{item.id}}" bindtap="recommendClick" hover-class="active">
+    <view class="reward-head">
+      <image src="{{item.event_user_head}}"></image>
+    </view>
+    <view class="reward-content">
+      <view class="reward-title">
+        <view class="reward-title-text">{{item.event_title}}</view>
+        <view class="reward-money"><i class="iconfont iconconsumption"></i> {{item.event_reward}}</view>
+      </view>
+      <view class="reward-datetime">
+        发布时间：{{item.event_release_time}}
+      </view>
+      <view class="reward-address">
+        <view class="reward-address-text">{{item.event_address}}</view>
+        <view class="reward-address-cut">|</view>
+        <view class="reward-address-distance">
+          <i class="iconfont iconmap"></i>
+          {{item.event_distance}}m
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 相关推荐 -->
+
+<!-- 底部浮动 -->
+<view class="float-container">
+  <view class="float-text">{{rewardDetail.event_browse_number}}人浏览过</view>
+  <view class="float-right">
+    <view class="float-reward">
+      <view class="float-icon"><i class="iconfont iconconsumption-fill"></i></view>
+      <view>120</view>
+    </view>
+    <view class="float-button" hover-class="button-active" bindtap="rightReceive">立即接取</view>
+  </view>
+</view>
+<!-- 底部浮动 -->

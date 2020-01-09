@@ -6,6 +6,7 @@
     "pages/rewardOverview/index",
     "pages/search/index",
     "pages/eventDetail/index",
+    "pages/eventProcess/index",
     "pages/helpList/helpList",
     "pages/helpInput/helpInput",
     "pages/previewphoto/previewphoto",

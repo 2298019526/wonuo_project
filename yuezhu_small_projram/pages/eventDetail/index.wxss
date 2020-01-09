@@ -9,6 +9,22 @@ cover-view,cover-image{
   margin: 0;
   box-sizing: border-box;
 }
+.line-container{
+  width: 100%;
+  padding: 0rpx 30rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  padding-top: 10rpx;
+}
+.line-container .line-right{
+  width: 10rpx;
+  height: 40rpx;
+  background-color: #e9524b;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+}
 /* 用户信息 */
 .user-container{
   width: calc(100% - 40rpx);
@@ -21,7 +37,7 @@ cover-view,cover-image{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10rpx;
+  padding: 20rpx 10rpx;
 }
 .user-container .user-content .user-head{
   width: 100rpx;
@@ -39,7 +55,106 @@ cover-view,cover-image{
   flex: 1;
   padding-left: 10rpx;
 }
+.user-container .user-content  .user-detail .user-name{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+.user-container .user-content  .user-detail .level-item{
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  margin-left: 10rpx;
+}
+.user-container .user-content  .user-detail .level-item .first{
+  background-color: #FFD700;
+}
+.user-container .user-content  .user-detail .level-item .second{
+  background-color: #D3D3D3;
+}
+.user-container .user-content  .user-detail .level-item .third{
+  background-color: #009999;
+}
+.user-container .user-content  .user-detail .level-item .level-icon{
+  width: 46rpx;
+  height: 46rpx;
+  flex-shrink: 0;
+  text-align: center;
+  line-height: 46rpx;
+  border-radius: 50%;
+  z-index: 9;
+}
+.user-container .user-content  .user-detail .level-item .level-text{
+  padding: 3rpx 20rpx;
+  margin-left: -10rpx;
+  border-radius: 5rpx;
+  font-size: 24rpx;
+  z-index: 8;
+}
+.user-container .user-content  .user-detail .reward-detail{
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #999999;
+}
+.user-container .user-content  .user-detail .reward-detail .reward-release{
+  margin-right: 20rpx;
+}
 /* 用户信息 */
+
+/* 悬赏详情 */
+.reward-container{
+  width: calc(100% - 40rpx);
+  margin: 20rpx auto;
+  background-color: #ffffff;
+  box-shadow: 0 0 10rpx #dddddd;
+  padding: 20rpx;
+}
+.reward-container .reward-title{
+  width: 100%;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 10rpx;
+}
+.reward-container .reward-label{
+  margin-bottom: 20rpx;
+}
+.reward-container .reward-describe{
+  margin-bottom: 20rpx;
+  font-size: 30rpx;
+  color: #666666;
+  padding: 10rpx;
+}
+.reward-container .reward-datetime{
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: #999999;
+}
+.reward-container .reward-phone{
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: #999999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.reward-container .reward-phone .phone-right{
+  margin-right: 40rpx;
+}
+.reward-container .reward-address{
+  font-size: 28rpx;
+  color: #999999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.reward-container .active{
+  background-color: #f6f6f6;
+}
+/* 悬赏详情 */
+
 /* 地图位置 */
 .map-container{
   width: calc(100% - 40rpx);
@@ -86,3 +201,138 @@ cover-view,cover-image{
   color: #666666;
 }
 /* 地图位置 */
+
+/* 相关推荐 */
+.recommend-container{
+  width: calc(100% - 40rpx);
+  margin: 20rpx auto;
+  margin-bottom: 120rpx;
+}
+.recommend-container .reward-item{
+  width: 100%;
+  border-bottom: 1rpx solid #f6f6f6;
+  position: relative;
+  padding: 20rpx 10rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 10rpx #dddddd;
+  background-color: #ffffff;
+  margin-bottom: 20rpx;
+}
+.recommend-container .active{
+  background-color: #ddd;
+}
+.recommend-container .reward-item .reward-head{
+  width: 100rpx;
+  height: 100rpx;
+  flex-shrink: 0;
+  margin-right: 10rpx;
+}
+.recommend-container .reward-item .reward-head image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.recommend-container .reward-item .reward-content{
+  flex: 1;
+  color: #666666;
+  width: calc(100% - 110rpx);
+}
+.recommend-container .reward-item .reward-title{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.recommend-container .reward-item .reward-title .reward-title-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 34rpx;
+  color: #333333;
+}
+.recommend-container .reward-item .reward-title .reward-money{
+  flex-shrink: 0;
+  height: 46rpx;
+  line-height: 46rpx;
+  padding: 0rpx 15rpx;
+  background-color: #e9524b;
+  color: #ffffff;
+  font-size: 28rpx;
+  border-radius: 20rpx;
+  margin-left: 10rpx;
+}
+.recommend-container .reward-item .reward-datetime{
+    width: 100%;
+    font-size: 28rpx;
+}
+.recommend-container .reward-item .reward-address{
+  color: #999999;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+}
+.recommend-container .reward-item .reward-address .reward-address-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.recommend-container .reward-item .reward-address .reward-address-cut{
+  padding: 0rpx 20rpx;
+  flex-shrink: 0;
+}
+.recommend-container .reward-item .reward-address .reward-address-distance{
+  flex-shrink: 0;
+}
+/* 相关推荐 */
+
+/* 底部浮动 */
+.float-container{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  box-shadow: 0 0 10rpx #dddddd;
+  background-color: #ffffff;
+  padding: 0rpx 20rpx;
+}
+.float-container .float-text{
+  margin-right: 10rpx;
+  color: #999999;
+  font-size: 28rpx;
+}
+.float-container .float-right{
+  display: flex;
+  align-items: center;
+}
+.float-container .float-reward{
+  margin-right: 20rpx;
+  color: #333333;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+}
+.float-container .float-reward .float-icon{
+  color: #e9524b;
+  text-align: center;
+}
+.float-container .float-reward .float-icon .iconfont{
+  font-size: 46rpx;
+}
+.float-container .float-button{
+  padding: 0rpx 30rpx;
+  height: 74rpx;
+  line-height: 74rpx;
+  background-color: #e9524b;
+  color: #ffffff;
+  border-radius: 37rpx;
+}
+.float-container .button-active{
+  background-color: #BF360C;
+}
+/* 底部浮动 */
