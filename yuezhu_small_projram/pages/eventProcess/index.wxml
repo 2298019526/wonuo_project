@@ -1,9 +1,85 @@
 <!--pages/eventProcess/index.wxml-->
 <!-- 开始 -->
-<view class="start"></view>
+<view class="container">
+  <view class="container-main not-over">
+    <view class="container-head">
+      <image src="{{release_user_info.user_head}}"></image>
+    </view>
+    <view class="container-content">
+      <view class="reward-title"><text>{{rewardDetail.event_title}}</text></view>
+      <view class="reward-label">
+        <view class="label-item">{{rewardDetail.event_type}}</view>
+      </view>
+      <view class="reward-datetime">
+        <i class="iconfont iconclock"></i>{{rewardDetail.event_release_time}}
+      </view>
+      <view class="reward-describe"><text>{{rewardDetail.event_describe}}</text></view>
+      <view class="reward-contact" bindtap="callPhone" data-phone="{{release_user_info.user_phone}}">
+        <i class="iconfont icondianhua"></i>
+        <text>{{release_user_info.user_real_name}}</text>
+        <text>{{release_user_info.user_phone}}</text>
+      </view>
+      <view class="reward-address">
+        <i class="iconfont iconmap1"></i>
+        <text>{{rewardDetail.event_address}}</text>
+      </view>
+    </view>
+  </view>
+</view>
 <!-- 开始 -->
 
-<!-- 进行中/结束 -->
+<!-- 进行中 -->
+<block wx:if="{{rewardDetail.event_status>=2}}">
+  <view class="container {{rewardDetail.event_status==2?'last-container':''}}">
+    <view class="container-main not-over">
+      <view class="container-head">
+        <image class="{{rewardDetail.event_status==2?'ongoing':''}}" src="{{receive_user_info.user_head}}"></image>
+      </view>
+      <view class="container-content">
+        <view class="receive-name">
+          <view>接取人：{{receive_user_info.user_name}}</view>
+          <view wx:if="{{rewardDetail.event_status==2}}" class="event-status going">正在进行中</view>
+        </view>
+        <view class="receive-datetime"><i class="iconfont iconclock"></i>{{rewardDetail.event_receive_time}}</view>
+        <view class="receive-contact" bindtap="callPhone" data-phone="{{receive_user_info.user_phone}}">
+          <i class="iconfont icondianhua"></i>
+          <text>{{receive_user_info.user_real_name}}</text>
+          <text>{{receive_user_info.user_phone}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+<!-- 进行中 -->
 
-<!-- 进行中/结束 -->
+<!-- 结束 -->
+<block wx:if="{{rewardDetail.event_status>=3}}">
+  <view class="container last-container">
+    <view class="container-main">
+      <view class="container-head">
+        <image class="{{rewardDetail.event_status>=3?'ongoing':''}}" src="{{release_user_info.user_head}}"></image>
+      </view>
+      <view class="container-content">
+        <view class="receive-name">
+          <view>{{release_user_info.user_name}}</view>
+          <view wx:if="{{rewardDetail.event_status==3}}" class="event-status over">已完成</view>
+          <view wx:if="{{rewardDetail.event_status==4}}" class="event-status overtime">超时完结</view>
+        </view>
+        <view class="receive-datetime"><i class="iconfont iconclock"></i>{{rewardDetail.event_over_time}}</view>
+        <view class="receive-contact" bindtap="callPhone" data-phone="{{release_user_info.user_phone}}">
+          <i class="iconfont icondianhua"></i>
+          <text>{{release_user_info.user_real_name}}</text>
+          <text>{{release_user_info.user_phone}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+<!-- 结束 -->
 
+<!-- 确认完结 -->
+<view class="footer-container">
+  <view class="over-count-down">剩余时间：{{countDown}}</view>
+  <view class="over-button" hover-class="button-active" bindtap="overReward">结束悬赏</view>
+</view>
+<!-- 确认完结 -->

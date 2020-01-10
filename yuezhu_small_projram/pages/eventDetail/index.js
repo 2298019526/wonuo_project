@@ -22,16 +22,20 @@ Page({
       user_name: "测试测试",
       event_user_head: "../../images/head/01.jpg",
       event_title: "求帮取快递",
+      event_type: "取快递",
       event_describe: "是分公司打分V字形差旅us如何过五色UR给后端非常是面持续打发斯蒂芬打算放过是的弗格森",
       event_reward: "120",
       event_release_time: "2020-01-01 10:10:01",
-      event_contact: "18290261572",
-      event_contacts: "王先生",
+      event_release_contact: "18290261571",
+      event_release_contacts: "王先生",
       event_long: "106.531677",
       event_lat: "29.452304",
       event_address: "重庆市巴南区红光大道",
       event_distance: "100",
-      event_browse_number: 4
+      event_browse_number: 4,
+      event_receive_time: "2020-01-10 12:10:12",
+      event_receive_contact: "18290261577",
+      event_receive_contacts: "饶先生"
     },
     markers: [{
       iconPath: "../../images/map-location.png",

@@ -119,7 +119,15 @@ cover-view,cover-image{
   margin-bottom: 10rpx;
 }
 .reward-container .reward-label{
-  margin-bottom: 20rpx;
+  padding: 10rpx 0rpx;
+}
+.reward-container .reward-label .label-item{
+  padding: 10rpx 20rpx;
+  border: 1rpx solid #dddddd;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  color: #999999;
+  display: inline-block;
 }
 .reward-container .reward-describe{
   margin-bottom: 20rpx;

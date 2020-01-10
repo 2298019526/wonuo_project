@@ -1,6 +1,199 @@
 /* pages/eventProcess/index.wxss */
 page{
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background-color: #f6f6f6;
+  box-sizing: border-box;
 }
+.going{
+  background-color: #FFCC99;
+}
+.over{
+  background-color: #33CC33;
+}
+.overtime{
+  background-color: #FF6666;
+}
+/* 开始 */
+.container{
+  width: 100%;
+  padding: 0rpx 20rpx;
+  padding-bottom: 40rpx;
+}
+.last-container{
+  margin-bottom: 120rpx;
+}
+.container-main{
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container .not-over::after{
+  display: block;
+  content: "";
+  width: 4rpx;
+  height: calc(50% + 25rpx);
+  position: absolute;
+  left: 60rpx;
+  top: calc(50% + 53rpx);
+  background-color: #dddddd;
+  z-index: -1;
+}
+.container-head{
+  width: 120rpx;
+  height: 120rpx;
+  flex-shrink: 0;
+  padding: 10rpx;
+  border-radius: 50%;
+}
+.container-head image{
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 10rpx #dddddd;
+  border-radius: 50%;
+}
+.container .ongoing{
+  animation: headAnimation 1.5s infinite;
+}
+@keyframes headAnimation{
+  0% {
+    box-shadow: 0 0 5rpx #e9524b;
+  }
+  50% {
+    box-shadow: 0 0 20rpx #e9524b;
+  }
+  100% {
+    box-shadow: 0 0 5rpx #e9524b;
+  }
+}
+.container-content{
+  width: 100%;
+  flex: 1;
+  box-shadow: 0 0 10rpx #dddddd;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  margin-left: 10rpx;
+  padding: 10rpx;
+}
+.container .container-content .reward-title{
+  width: 100%;
+  font-size: 32rpx;
+  color: #333333;
+}
+.container .container-content .reward-label{
+  padding: 10rpx 0rpx;
+}
+.container .container-content .reward-label .label-item{
+  padding: 8rpx 15rpx;
+  border: 1rpx solid #dddddd;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  color: #999999;
+  display: inline-block;
+}
+.container .container-content  .reward-datetime{
+  width: 100%;
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 10rpx;
+}
+.container .container-content  .reward-describe{
+  width: 100%;
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 10rpx;
+}
+.container .container-content .reward-contact{
+  width: 100%;
+  font-size: 28rpx;
+  color: #999999;
+  margin-bottom: 10rpx;
+}
+.container .container-content .reward-contact text{
+  margin-right: 20rpx;
+}
+.container .container-content .reward-address{
+  width: 100%;
+  font-size: 28rpx;
+  color: #999999;
+}
+/* 开始 */
+
+/* 进行中 */
+.receive-name{
+  width: 100%;
+  margin-bottom: 10rpx;
+  font-size: 32rpx;
+  color: #333333;
+  display: flex;
+  align-items: center;
+}
+.receive-name .user-name{
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.receive-name .event-status{
+  line-height: 46rpx;
+  font-size: 28rpx;
+  padding: 0rpx 15rpx;
+  color: #ffffff;
+  flex-shrink: 0;
+  margin-left: 10rpx;
+  border-radius: 10rpx;
+}
+.receive-datetime{
+  width: 100%;
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+  color: #999999;
+}
+.receive-contact{
+  width: 100%;
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+  color: #999999;
+}
+.receive-contact text{
+  margin-right: 20rpx;
+}
+/* 进行中 */
+
+/* 结束 */
+
+/* 结束 */
+
+/* 确认完结 */
+.footer-container{
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  z-index: 999;
+  background-color: #ffffff;
+  box-shadow: 0 0 10rpx #dddddd;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0rpx 20rpx;
+  align-items: center;
+}
+.footer-container .over-count-down{
+  margin-right: 20rpx;
+  font-size: 28rpx;
+  color: #e9524b;
+}
+.footer-container .over-button{
+  line-height: 76rpx;
+  padding: 0rpx 26rpx;
+  background-color: #e9524b;
+  color: #ffffff;
+  border-radius: 38rpx;
+}
+.footer-container .button-active{
+  background-color: #BF360C;
+}
+/* 确认完结 */

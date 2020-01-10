@@ -44,18 +44,20 @@
 </view>
 <view class="reward-container">
   <view class="reward-title">{{rewardDetail.event_title}}</view>
-  <view class="reward-label"></view>
+  <view class="reward-label">
+    <view class="label-item">{{rewardDetail.event_type}}</view>
+  </view>
   <view class="reward-describe">{{rewardDetail.event_describe}}</view>
   <view class="reward-datetime">
     <i class="iconfont iconclock"></i>
     <text>{{rewardDetail.event_release_time}}</text>
   </view>
-  <view class="reward-phone" hover-class="active" bindtap="callPhone" data-phone="{{rewardDetail.event_contact}}">
+  <view class="reward-phone" hover-class="active" bindtap="callPhone" data-phone="{{rewardDetail.event_release_contact}}">
     <view>
       <i class="iconfont icondianhua"></i>
-      <text>{{rewardDetail.event_contact}}</text>
+      <text>{{rewardDetail.event_release_contact}}</text>
     </view>
-    <view class="phone-right">{{rewardDetail.event_contacts}}</view>
+    <view class="phone-right">{{rewardDetail.event_release_contacts}}</view>
   </view>
   <view class="reward-address" hover-class="active" bindtap="showEventLocation">
     <view>
