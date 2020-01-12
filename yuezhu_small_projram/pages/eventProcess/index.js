@@ -190,6 +190,7 @@ Page({
         countDownStr += minutes + "分钟 ";
       }
       countDownStr += seconds + "秒";
+
       that.setData({
         countDown: countDownStr
       })

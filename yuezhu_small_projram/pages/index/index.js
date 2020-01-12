@@ -194,7 +194,7 @@ Page({
         wx.hideLoading();
       },
       success (res) {
-        console.log("返回值",res);
+        //console.log("返回值",res);
         if(res.data.code==0){
           let newData = res.data.data;
           if(newData.length>0){
@@ -215,7 +215,7 @@ Page({
             icon: 'none'
           })
         }
-        console.log("附近悬赏返回值",res.data);
+        //console.log("附近悬赏返回值",res.data);
       }
     })
 
@@ -227,7 +227,7 @@ Page({
     wx.getLocation({
       type: "gcj02", //返回可以用于wx.openLocation的经纬度
       success: function (res) {
-        //console.log(res);
+        console.log(res);
         let latitude = res.latitude;
         let longitude = res.longitude;
         app.globalData.point = {
@@ -253,8 +253,9 @@ Page({
   //根据坐标获得地址信息
   getLocationAddress: function(long,lat){
     let that = this;
-
     // 调用接口, 坐标转具体位置 -xxz0717
+    console.log("key",routeList.mapKey);
+
     demo.reverseGeocoder({
       location: {
         latitude: Number(lat),
@@ -268,6 +269,7 @@ Page({
         app.globalData.address = res.result.address;
       },
       fail: function (res) {
+        console.log(res);
         wx.showToast({
           title: '定位失败',
           icon: 'none'

@@ -34,7 +34,8 @@ const routeList = {
   //获取积分记录数据
   getIntegralRecordData: domain + '/index/getIntegralRecordData',
   //地图的key，使用腾讯位置服务api的标识
-  mapKey: "USUBZ-RGXCF-2VGJT-JJMYB-XDLZJ-BSF4T"
+  //mapKey: "2W3BZ-GADKG-2QMQC-IPCL6-ZUUTK-TEBDU"
+  mapKey: "USUBZ-RGXCF-2VGJT-JJMYB-XDLZJ-BSF4T",
 }
 
 module.exports = routeList; //暴露出变量
