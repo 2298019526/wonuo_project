@@ -1,0 +1,7 @@
+<!--pages/userAgreement/index.wxml-->
+<view class="agreement-title">
+  {{agreement.title}}
+</view>
+<view class="agreement-content">
+  {{agreement.content}}
+</view>

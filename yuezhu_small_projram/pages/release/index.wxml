@@ -1,0 +1,70 @@
+<!-- 悬赏标题以及描述 -->
+<view class="header-container">
+  <view class="reward-title">
+    <input class="title-input" type="text" placeholder="请输入悬赏标题" placeholder-style="color:#999999;" data-type="title" bindinput="valueChange"></input>
+  </view>
+  <view class="reward-describe">
+    <textarea class="describe-input" maxlength="255" placeholder="请输入悬赏内容，例如：我需要人将文件送至重庆理工大学教学楼" data-type="describe" bindinput="valueChange" placeholder-style="color:#999999;"></textarea>
+  </view>
+  <view class="reward-address">
+    <view class="address-content">
+      <view class="address-icon" hover-class="address-active" bindtap="chooseMapLocation">
+        <image src="../../images/location.png"></image>
+      </view>
+      <input class="address-input" type="text" placeholder="请选择或者输入悬赏地址" placeholder-style="color:#999999;" data-type="address" bindinput="valueChange" value="{{rewardAddress}}"></input>
+    </view>
+  </view>
+</view>
+<!-- 悬赏标题以及描述 -->
+
+<!-- 悬赏信息 -->
+<view class="info-container">
+  <view class="info-line">
+    <view class="line-left">悬赏积分</view>
+    <view class="line-right">
+      <input class="integral-input" value="{{rewardIntegral}}" type="text" placeholder="请输入悬赏积分" placeholder-style="color:#999999;" data-type="integral" bindinput="valueChange"></input>
+    </view>
+  </view>
+  <view class="info-line">
+    <view class="line-left">悬赏分类</view>
+    <view class="line-right">
+      <picker range="{{rewardClass}}" bindchange="valueChange" data-type="type" range-key="value" value="{{currentClass}}">
+        <view class="picker">{{rewardClass[currentClass].value}}</view>
+      </picker>
+    </view>
+  </view>
+  <view class="info-line">
+    <view class="line-left">联系人</view>
+    <view class="line-right">
+      <input class="integral-input" value="{{userInfo.user_real_name}}" type="text" placeholder="请输入真实姓名，以便联系" placeholder-style="color:#999999;" data-type="contacts" bindinput="valueChange"></input>
+    </view>
+  </view>
+  <view class="info-line">
+    <view class="line-left">联系电话</view>
+    <view class="line-right">
+      <input class="integral-input" value="{{userInfo.user_phone}}" type="text" placeholder="请输入联系电话" placeholder-style="color:#999999;" data-type="contactnumber" bindinput="valueChange"></input>
+    </view>
+  </view>
+  <view class="info-line">
+    <view class="line-left">有效期至</view>
+    <view class="line-right">
+      <picker mode="date" bindchange="valueChange" data-type="overtime" value="{{rewardOvertime}}" start="{{overStart}}" end="{{overEnd}}">
+        <view class="picker">{{rewardOvertime}}</view>
+      </picker>
+    </view>
+  </view>
+</view>
+<!-- 悬赏信息 -->
+
+<!-- 底部按钮协议等 -->
+<view class="footer-container">
+  <view class="agreement-line">
+    <checkbox-group bindchange="valueChange" data-type="agreement">
+      <label class="checkbox">
+        <checkbox value="{{agreement.name}}" checked="{{agreement.checked}}"/>我已阅读并同意 <text class="agreement-text" catchtap="toAgreement">悦助用户协议</text>
+      </label>
+    </checkbox-group>
+  </view>
+  <button disabled="{{!agreement.checked}}" class="release-button" hover-class="button-active" bindtap="releaseSubmit">发 布</button>
+</view>
+<!-- 底部按钮协议等 -->

@@ -89,6 +89,7 @@ Page({
   onLoad: function (options) {
     let that = this;
     that.getCurrentLocation();
+    that.getTodayStarRank();
   },
 
   /**
@@ -248,6 +249,8 @@ Page({
       }
     });
   },
+
+  //根据坐标获得地址信息
   getLocationAddress: function(long,lat){
     let that = this;
 
@@ -258,10 +261,11 @@ Page({
         longitude: Number(long)
       },
       success: function (res) {
-        //console.log("地址解析返回值：",res);
+        console.log("地址解析返回值：",res);
         that.setData({
           currentCity: res.result.address_component.city
         });
+        app.globalData.address = res.result.address;
       },
       fail: function (res) {
         wx.showToast({

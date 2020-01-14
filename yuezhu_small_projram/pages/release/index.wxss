@@ -1,0 +1,140 @@
+/* pages/release/index.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #f6f6f6;
+}
+/* 悬赏标题以及描述 */
+.header-container{
+  width: 100%;
+  background-color: #ffffff;
+  margin-bottom: 50rpx;
+}
+.reward-title{
+  width: 100%;
+  padding: 0rpx 20rpx;
+}
+.reward-title .title-input{
+  width: 100%;
+  border-bottom: 1rpx solid #f6f6f6;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #333333
+}
+.reward-describe{
+  width: 100%;
+  padding: 10rpx 20rpx;
+}
+.reward-describe .describe-input{
+  width: 100%;
+  height: 200rpx;
+  color: #666666;
+}
+.reward-address{
+  width: 100%;
+  padding: 0rpx 20rpx;
+}
+.address-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1rpx solid #f6f6f6;
+}
+.reward-address .address-input{
+  width: 100%;
+  flex: 1;
+  height: 80rpx;
+  color: #666666;
+}
+.reward-address .address-icon{
+  width: 60rpx;
+  height: 60rpx;
+  padding: 10rpx;
+}
+.reward-address .address-active{
+  background-color: #dddddd;
+}
+.reward-address .address-icon image{
+  width: 100%;
+  height: 100%;
+}
+/* 悬赏标题以及描述 */
+
+/* 悬赏信息 */
+.info-container{
+  width: 100%;
+  padding: 0rpx 20rpx;
+  background-color: #ffffff;
+}
+.info-line{
+  width: 100%;
+  border-bottom: 1rpx solid #f6f6f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 80rpx;
+}
+.info-line .line-left{
+  width: 200rpx;
+  flex-shrink: 0;
+}
+.info-line .line-right{
+  width: 100%;
+  flex: 1;
+  text-align: left;
+}
+/* 悬赏信息 */
+
+/* 底部按钮协议等 */
+.agreement-line{
+  width: 100%;
+  padding: 40rpx 40rpx;
+}
+.agreement-line .agreement-text{
+  color: #3399CC;
+}
+.agreement-line .text-active{
+  text-decoration: underline;
+}
+/*checkbox 整体大小  */
+checkbox{
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 10rpx;
+}
+/*checkbox 选项框大小  */
+checkbox .wx-checkbox-input {
+  width: 35rpx;
+  height: 35rpx;
+}
+/*checkbox选中后样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #FF525C;
+}
+/*checkbox选中后图标样式  */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 28rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+.release-button{
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #e9524b;
+  border-radius: 10rpx;
+  color: #ffffff;
+  margin: 0 auto;
+  margin-bottom: 20rpx;
+}
+.button-active{
+  background-color: #BF360C;
+}
+/* 底部按钮协议等 */

@@ -93,6 +93,14 @@
 					"id": -1,
 					"name": "pages/eventProcess/index",
 					"pathName": "pages/eventProcess/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "发布页面",
+					"pathName": "pages/release/index",
+					"query": "",
 					"scene": null
 				}
 			]

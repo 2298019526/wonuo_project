@@ -17,6 +17,8 @@ const routeList = {
   receiveReward: domain + '/index/receiveReward',
   //获取悬赏流程页面数据
   getRewardProcess: domain + '/index/getRewardProcess',
+  //发布悬赏
+  release: domain + '/index/release',
   //地图的key，使用腾讯位置服务api的标识
   mapKey: "USUBZ-RGXCF-2VGJT-JJMYB-XDLZJ-BSF4T"
 }

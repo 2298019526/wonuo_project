@@ -1,0 +1,14 @@
+/* pages/userAgreement/index.wxss */
+.agreement-title{
+  width: 100%;
+  padding: 20rpx;
+  color: #333333;
+  font-size: 36rpx;
+  text-align: center;
+}
+.agreement-content{
+  width: 100%;
+  padding: 0rpx 20rpx;
+  color: #999999;
+  font-size: 28rpx;
+}
