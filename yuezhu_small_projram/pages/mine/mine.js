@@ -1,75 +1,110 @@
-var app = getApp();
+//引入app实例
+const app = getApp();
+//引入路由模块
+const routeList = require("../../utils/router.js");
 Page({
-    data: {
-        wechatUserInfo: {},
-        userInfo:{}
+  data: {
+    empowerStatus: false,
+    userInfo:{
+      user_id: 1,
+      user_name: "九月",
+      user_head: "../../images/head/01.jpg",
+      user_sex: 1,
+      user_phone: "18090261577",
+      user_level: 0,
+      event_release: "16",
+      event_received: "10",
+      user_integral: 1200
     },
+    userInfoState: false,
+    myReleaseNum: 0,
+    myReceiveNum: 0,
+    servicePhone: ""
+  },
 
-    onLoad: function () {
-        var that = this
-  	    //调用应用实例的方法获取全局数据
-        app.getUserInfo(function(userInfo){
-            //更新数据
-            that.setData({
-                wechatUserInfo:userInfo
-            });
-            that.update();
-        })
-    },
-
-    onReady: function () {
-        this.fetchData();
-    },
-
-    onShow:function(){
-        this.fetchData();
-    },
-
-    //获取数据
-    fetchData:function(){
-        var self = this;
-        wx.request({
-            url: 'https://wechatapp.zhhhorizon.net/intl-console-web/user/getUserInfo',
-            header:{
-                "contentType":"application/json",
-                "dataType":"json"
-            },
-            data: {
-                userId: self.data.wechatUserInfo.nickName,
-            },
-            method:"POST",
-            success: function(resp) {
-                if (resp.data.usePoint){
-                    self.setData({
-                        userInfo:resp.data
-                    });
-                }
-                else{
-                    self.doMock();
-                }
-            },
-            fail:function(resp){
-                self.doMock();
-            }
-        });
-    },
-
-    doMock:function(){
-        this.setData({
-            userInfo:app.mockUserInfo
-        });
-    },
-
-    //跳转页面
-    myToHelpPage:function(){
-        wx.navigateTo({
-             url: '../myToHelp/myToHelp'
-        })
-    },
+  onLoad: function () {
+    let that = this;
     
-    myGetHelpPage:function(){
-        wx.navigateTo({
-             url: '../myGetHelp/myGetHelp'
-        })
-    }
+    
+  },
+
+  onShow:function(){
+    let that = this;
+    
+    that.getRewardInfo();
+    app.getUserInfo(function(){
+      that.setData({
+        userInfoState: app.globalData.infoState,
+        servicePhone: app.globalData.servicePhone
+        //userInfo: app.globalData.userInfo
+      })
+    // if(app.globalData.userType==0){ //未注册
+    //   that.setData({
+    //     empowerStatus: true
+    //   })
+    // }
+    });
+  },
+
+  //获取用户的悬赏信息
+  getRewardInfo: function(){
+    let that = this;
+
+    wx.request({
+      url: routeList.getMineReward,
+      data: {
+
+      },
+      success: function(res){
+        if(res.data.code=='0'){
+          that.setData({
+            myReleaseNum: res.data.data.myReleaseNum,
+            myReceiveNum: res.data.data.myReceiveNum
+          })
+        }else{
+          wx.showToast({
+            title: res.data.msg,
+            icon: "none"
+          })
+        }
+      }
+    })
+  },
+
+  //获取用户信息返回值
+  getUserInfo: function () {
+    let that = this;
+
+    that.setData({
+      empowerStatus: false
+    })
+    wx.showLoading({
+      title: '授权中...',
+      mask: true
+    })
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) { //已授权个人信息
+          wx.getUserInfo({
+            success(res) {
+              //console.log("获取用户信息成功", res)
+              app.updateUserInfo(res.userInfo);
+            }
+          })
+        } else { //未授权个人信息
+          that.setData({
+            empowerStatus: true
+          })
+        }
+      }
+    })
+  },
+
+  //打电话
+  callPhone: function(e){
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.phone
+    });
+  }
+
 })

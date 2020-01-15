@@ -48,7 +48,6 @@ Page({
   onLoad: function (options) {
     let that = this;
 
-
     that.setTodayDate();
   },
 

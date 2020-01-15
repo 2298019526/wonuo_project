@@ -287,5 +287,4 @@ Page({
       url: '../eventDetail/index?event_id=' + eventId,
     })
   }
-
 })

@@ -9,14 +9,10 @@
     "pages/eventProcess/index",
     "pages/release/index",
     "pages/userAgreement/index",
-    "pages/helpList/helpList",
-    "pages/helpInput/helpInput",
-    "pages/previewphoto/previewphoto",
-    "pages/helpDetail/helpDetail",
-    "pages/myPage/myPage",
-    "pages/helpConfirmed/helpConfirmed",
-    "pages/myGetHelp/myGetHelp",
-    "pages/myToHelp/myToHelp"
+    "pages/myRelease/index",
+    "pages/myReceive/index",
+    "pages/IntegralDetails/index",
+    "pages/myUserInfo/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

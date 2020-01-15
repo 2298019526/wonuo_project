@@ -1,36 +1,70 @@
-<view class="container">
-    <view class="item">
-        <view class="itemLeft fl">
-            <image src="{{wechatUserInfo.avatarUrl}}" class="personImg fl"></image>
-            <text class="fl personName">{{wechatUserInfo.nickName}}</text>
-
-        </view>
-        <view class="itemRight fr">
-            <text class="fr">我的积分:{{userInfo.usePoint}}</text>
-        </view>
+<!-- 头部 -->
+<view class="header-container">
+  <image class="header-background" src="../../images/mine_bg.png"></image>
+  <view class="header-content">
+    <view class="header-image">
+      <open-data type="userAvatarUrl"></open-data>
     </view>
-
-    <view class="upSpace">
+    <view class="header-title">
+      <view class="user-name">{{userInfo.user_name}}</view>
+      <view class="level-item" wx:if="{{userInfo.user_level==2}}">
+        <view class="level-icon first"><i class="iconfont icondengji"></i></view>
+        <view class="level-text first">黄金</view>
+      </view>
+      <view class="level-item" wx:if="{{userInfo.user_level==1}}">
+        <view class="level-icon second"><i class="iconfont icondengji"></i></view>
+        <view class="level-text second">白银</view>
+      </view>
+      <view class="level-item" wx:if="{{userInfo.user_level==0}}">
+        <view class="level-icon third"><i class="iconfont icondengji"></i></view>
+        <view class="level-text third">青铜</view>
+      </view>
     </view>
-
-    <view class="itemHelp" bindtap="myToHelpPage">
-        <view class="itemHelpLeft fl">
-            <image src="../../images/me/myToHelp.png" class="helpImg fl"></image>
-            <text class="fl helpName">我帮助的</text>
-        </view>
-        <view class="itemHelpRight fr">
-           <image src="../../images/me/arrow.png" class="arrowImg fr"></image>
-        </view>
+    <view class="header-other">
+      <view class="user-integral">剩余积分：{{userInfo.user_integral}}</view>
     </view>
-
-    <view class="itemHelp" bindtap="myGetHelpPage">
-        <view class="itemHelpLeft fl">
-            <image src="../../images/me/myGetHelp.png" class="helpImg fl"></image>
-            <text class="fl helpName">我求助的</text>
-        </view>
-        <view class="itemHelpRight fr">
-           <image src="../../images/me/arrow.png" class="arrowImg fr"></image>
-        </view>
-    </view>
-
+  </view>
 </view>
+<!-- 头部 -->
+
+<!-- 主体菜单 -->
+<view class="menu-container">
+  <navigator url="../myRelease/index" class="menu-item">
+    <view class="item-left"><i class="iconfont iconliebiao1"></i> 我的发布</view>
+    <view class="item-right"><text class="right-text" hidden="{{myReleaseNum==0}}">{{myReleaseNum}}进行中</text><i class="iconfont iconarrow-right"></i></view>
+  </navigator>
+  <navigator url="../myReceive/index" class="menu-item">
+    <view class="item-left"><i class="iconfont iconnav-list"></i> 我的接取</view>
+    <view class="item-right"><text class="right-text" hidden="{{myReceiveNum==0}}">{{myReceiveNum}}进行中</text><i class="iconfont iconarrow-right"></i></view>
+  </navigator>
+  <navigator url="../IntegralDetails/index" class="menu-item">
+    <view class="item-left"><i class="iconfont iconintegral"></i> 积分明细</view>
+    <view class="item-right"><i class="iconfont iconarrow-right"></i></view>
+  </navigator>
+  <navigator url="../myUserInfo/index" class="menu-item">
+    <view class="item-left"><i class="iconfont icongerenxinxi"></i> 个人信息</view>
+    <view class="item-right"><text class="right-text grey-text" hidden="{{userInfoState}}">待完善</text><i class="iconfont iconarrow-right"></i></view>
+  </navigator>
+</view>
+<!-- 主体菜单 -->
+
+<!-- 客服电话 -->
+<view class="service-container">
+  <view class="service-content">
+    客服热线：<view class="service-phone" hover-class="phone-active" data-phone="{{servicePhone}}" bindtap="callPhone">{{servicePhone}}</view>
+  </view>
+</view>
+<!-- 客服电话 -->
+
+<!-- 获取用户信息授权弹窗 -->
+<view class="userinfo-container" wx:if="{{empowerStatus}}">
+  <view class="mask"></view>
+  <view class="content">
+    <view class="content-title">提示</view>
+    <view class="content-text">小程序需要您的授权才能提供更好的服务哦</view>
+    <view class="content-buttons">
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="button-confirm" hover-class="button-active">确 认</button>
+    </view>
+  </view>
+</view>
+<!-- 获取用户信息授权弹窗 -->

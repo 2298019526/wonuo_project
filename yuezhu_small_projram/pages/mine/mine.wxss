@@ -1,100 +1,240 @@
 page{
-  background-color: #Efeff4;
+  width: 100%;
+  height: 100%;
 }
+/* 头部 */
+.header-container{
+  width: 100%;
+  height: 400rpx;
+  background-image: linear-gradient(to bottom, #e9524b , #FF9999);
+  position: relative;
+  padding: 20rpx;
+  text-align: center;
+}
+.header-background{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.header-image{
+  width: 120rpx;
+  height: 120rpx;
+  margin: 0 auto;
+  border-radius: 50%;
+  box-shadow: 0 0 20rpx #ffffff;
+  overflow: hidden;
+}
+.header-image open-data{
+  width: 100%;
+  height: 100%;
+}
+.header-title{
+  width: 100%;
+  padding: 20rpx 0rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-title .user-name{
+  font-size: 38rpx;
+  color: #ffffff;
+}
+/* 称号等级 */
+.level-item{
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  margin-left: 10rpx;
+}
+.level-item .first{
+  background-color: #FFD700;
+}
+.level-item .second{
+  background-color: #D3D3D3;
+}
+.level-item .third{
+  background-color: #009999;
+}
+.level-item .level-icon{
+  width: 46rpx;
+  height: 46rpx;
+  flex-shrink: 0;
+  text-align: center;
+  line-height: 46rpx;
+  border-radius: 50%;
+  z-index: 9;
+}
+.level-item .level-text{
+  padding: 3rpx 20rpx;
+  margin-left: -10rpx;
+  border-radius: 5rpx;
+  font-size: 24rpx;
+  z-index: 8;
+}
+/* 称号等级 */
+.header-other{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-other .user-integral{
+  font-size: 30rpx;
+  color: #f1f1f1;
+}
+/* 头部 */
 
-.container{
- background-color: #Efeff4;
-height:100%;
+/* 主体菜单 */
+.menu-container{
+  width: calc(100% - 40rpx);
+  margin: 0 auto;
+  margin-top: -100rpx;
+  box-shadow: 0 0 10rpx #dddddd;
+  border-radius: 10rpx;
+  background-color: #ffffff;
+  position: relative;
 }
+.menu-container .menu-item{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+.menu-item .item-left{
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  color: #666666;
+}
+.menu-item .item-left .iconfont{
+  margin-right: 5rpx;
+  font-size: 40rpx;
+}
+.menu-item .item-right{
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: #999999;
+}
+.menu-item .item-right .right-text{
+  color: #e9524b;
+  font-size: 24rpx;
+}
+.menu-item .item-right .grey-text{
+  color: #aaaaaa;
+}
+/* 主体菜单 */
 
-.fl{
-float:left;
+/* 客服电话 */
+.service-container{
+  width: 100%;
+  padding: 40rpx 20rpx;
+  text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+.service-container::before{
+  content: "";
+  width: 50%;
+  height: 2rpx;
+  background-color: #f1f1f1;
+  position: relative;
+  z-index: 1;
+}
+.service-container::after{
+  content: "";
+  width: 50%;
+  height: 2rpx;
+  background-color: #f1f1f1;
+  position: relative;
+  z-index: 1;
+}
+.service-content{
+  padding: 0rpx 20rpx;
+  background-color: #ffffff;
+  position: relative;
+  z-index: 9;
+  font-size: 28rpx;
+  color: #999999;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.service-content .service-phone{
+  color: #e9524b;
+  font-size: 26rpx;
+}
+.service-content .phone-active{
+  text-decoration: underline;
+}
+/* 客服电话 */
 
-.fr{
-float:right;
+/* 获取用户信息授权弹窗 */
+.userinfo-container{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-.item{
-width:100%;
-height: 84px;
-border-bottom: 1px solid #d4d4d4;
-border-top: 1px solid #d4d4d4;
-background: #fff;
+.userinfo-container .mask{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
 }
-
-.itemLeft{
-width: 44%;
-margin-top: 10px;
-height: 60px;
+.userinfo-container .content{
+  width: 80%;
+  background-color: #ffffff;
+  position: relative;
+  z-index: 9;
+  border-radius: 10rpx;
+  text-align: center;
 }
-
-.personImg{
-width:60px;
-height:60px;
-margin-left: 10px;
-border-radius: 50%;
+.userinfo-container .content .content-title{
+  width: 100%;
+  line-height: 80rpx;
+  font-size: 38rpx;
+  color: #333333;
+  padding-top: 20rpx;
 }
-
-.personName{
-color:black;
-margin-top: 21px;
-text-indent:8px;
+.userinfo-container .content .content-text{
+  padding: 20rpx;
+  padding-top: 0rpx;
+  font-size: 30rpx;
+  color: #999999;
 }
-
-.itemRight{
-text-align: right;
-border: 0;
-font-size: 16px;
-color: #e8ae26;
-margin-top: 32px;
-margin-right: 5%;
-width: 50%;
+.content-buttons{
+  width: 100%;
+  border-top: 1rpx solid #f1f1f1;
+  display: flex;
 }
-
-.upSpace{
-height: 18px;
-font-size: 12px;
-color: #666;
+.button-confirm{
+  width: 100%;
+  flex: 1;
+  line-height: 90rpx;
+  text-align: center;
+  color: #666699;
+  font-size: 38rpx;
 }
-
-.itemHelp{
-width:100%;
-height: 45px;
-border-bottom: 0px solid #d4d4d4;
-border-top: 1px solid #d4d4d4;
-background: #fff;
+.button-active{
+  background-color: #dddddd;
 }
-
-.itemHelpLeft{
-width: 44%;
-margin-top: 5px;
-height: 40px;
-}
-
-.helpImg{
-width:40px;
-height:40px;
-margin-left: 3px;
-}
-
-.helpName{
-color:black;
-margin-top: 6px;
-}
-
-.itemHelpRight{
-text-align: right;
-border: 0;
-font-size: 16px;
-color: #e8ae26;
-margin-top: 12px;
-margin-right: 1%;
-width: 50%;
-}
-
-.arrowImg{
-width:20px;
-height:20px;
-margin-left: 3px;
-}
+/* 获取用户信息授权弹窗 */

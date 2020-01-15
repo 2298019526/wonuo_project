@@ -9,15 +9,15 @@
       <view class="user-name">
         <view class="user-name-text">{{userInfo.user_name}}</view>
         <view class="user-level">
-          <view class="level-item" wx:if="{{userInfo.user_level==1}}">
+          <view class="level-item" wx:if="{{userInfo.user_level==2}}">
             <view class="level-icon first"><i class="iconfont icondengji"></i></view>
             <view class="level-text first">黄金</view>
           </view>
-          <view class="level-item" wx:if="{{userInfo.user_level==2}}">
+          <view class="level-item" wx:if="{{userInfo.user_level==1}}">
             <view class="level-icon second"><i class="iconfont icondengji"></i></view>
             <view class="level-text second">白银</view>
           </view>
-          <view class="level-item" wx:if="{{userInfo.user_level==3}}">
+          <view class="level-item" wx:if="{{userInfo.user_level==0}}">
             <view class="level-icon third"><i class="iconfont icondengji"></i></view>
             <view class="level-text third">青铜</view>
           </view>

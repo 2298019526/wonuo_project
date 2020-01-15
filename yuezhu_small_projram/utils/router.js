@@ -1,6 +1,10 @@
 const domain = "http://127.0.0.1/yuezhu_admin/public/index.php/index"; //域名
 //路由列表
 const routeList = {
+  //微信小程序登录,根据code换区sessionkey
+  login: domain + '/index/login',
+  //获取用户信息
+  getUserInfo: domain + '/index/getUserInfo',
   //获取今日之星排行
   getTodayStarRank: domain + '/index/getTodayStarRank',
   //获取首页的附近悬赏数据
@@ -19,6 +23,8 @@ const routeList = {
   getRewardProcess: domain + '/index/getRewardProcess',
   //发布悬赏
   release: domain + '/index/release',
+  //获取个人中心悬赏信息
+  getMineReward: domain + '/index/getMineReward',
   //地图的key，使用腾讯位置服务api的标识
   mapKey: "USUBZ-RGXCF-2VGJT-JJMYB-XDLZJ-BSF4T"
 }
