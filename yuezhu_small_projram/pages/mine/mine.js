@@ -19,7 +19,7 @@ Page({
     userInfoState: false,
     myReleaseNum: 0,
     myReceiveNum: 0,
-    servicePhone: ""
+    servicePhone: "023-12345678"
   },
 
   onLoad: function () {

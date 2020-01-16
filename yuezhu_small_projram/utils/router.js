@@ -25,6 +25,12 @@ const routeList = {
   release: domain + '/index/release',
   //获取个人中心悬赏信息
   getMineReward: domain + '/index/getMineReward',
+  //获取我的发布
+  getMyReleaseData: domain + '/index/getMyReleaseData',
+  //获取我的接取
+  getMyReceiveData: domain + '/index/getMyReceiveData',
+  //获取积分记录数据
+  getIntegralRecordData: domain + '/index/getIntegralRecordData',
   //地图的key，使用腾讯位置服务api的标识
   mapKey: "USUBZ-RGXCF-2VGJT-JJMYB-XDLZJ-BSF4T"
 }

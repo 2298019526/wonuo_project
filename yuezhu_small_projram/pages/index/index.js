@@ -279,7 +279,7 @@ Page({
     });
   },
 
-  //事件点击事件
+  //悬赏点击事件
   eventClick: function(e){
     let that = this;
     let eventId = e.currentTarget.dataset.id;

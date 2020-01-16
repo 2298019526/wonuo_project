@@ -1,1 +1,151 @@
 /* pages/myRelease/index.wxss */
+/* 导航标签 */
+.nav-container{
+  width: 100%;
+  padding: 20rpx 0rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e9524b;
+}
+.nav-container .nav-left{
+  width: 150rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border: 1rpx solid #e9524b;
+  border-top-left-radius: 10rpx;
+  border-bottom-left-radius: 10rpx;
+}
+.nav-container .nav-right{
+  width: 150rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border: 1rpx solid #e9524b;
+  border-top-right-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+.nav-container .nav-current{
+  background-color: #e9524b;
+  color: #ffffff;
+}
+/* 导航标签 */
+
+/* 主体内容 */
+.reward-container{
+  margin-top: 20rpx;
+  border-top: 1rpx solid #f6f6f6;
+}
+.reward-container .reward-item{
+  width: 100%;
+  border-bottom: 1rpx solid #f6f6f6;
+  position: relative;
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.reward-container .active{
+  background-color: #ddd;
+}
+.reward-container .reward-item .reward-head{
+  width: 100rpx;
+  height: 100rpx;
+  flex-shrink: 0;
+  margin-right: 10rpx;
+}
+.reward-container .reward-item .reward-head image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.reward-container .reward-item .reward-content{
+  flex: 1;
+  color: #666666;
+  width: calc(100% - 110rpx);
+}
+.reward-container .reward-item .reward-title{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.reward-container .reward-item .reward-title .reward-title-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 34rpx;
+  color: #333333;
+}
+.reward-container .reward-item .reward-title .reward-money{
+  flex-shrink: 0;
+  height: 46rpx;
+  line-height: 46rpx;
+  padding: 0rpx 15rpx;
+  background-color: #e9524b;
+  color: #ffffff;
+  font-size: 28rpx;
+  border-radius: 20rpx;
+  margin-left: 10rpx;
+}
+.reward-container .reward-item .reward-title  .reward-finish{
+  background-color: #dddddd;
+}
+.reward-container .reward-item .reward-datetime{
+    width: 100%;
+    font-size: 28rpx;
+}
+.reward-container .reward-item .reward-address{
+  color: #999999;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+}
+.reward-container .reward-item .reward-address .reward-address-text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.reward-container .reward-item .reward-address .reward-address-cut{
+  padding: 0rpx 20rpx;
+  flex-shrink: 0;
+}
+.reward-container .reward-item .reward-address .reward-address-distance{
+  flex-shrink: 0;
+}
+.reward-container .reward-item .reward-status{
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #999999;
+}
+.reward-container .reward-item .reward-status .finish{
+  color: #66CC99;
+}
+.reward-container .reward-item .reward-status .overtime{
+  color: #CC3333;
+}
+
+/* 无数据 */
+.not-find{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.not-find .not-find-image{
+  width: 375rpx;
+  margin: 20rpx;
+}
+.not-find .not-find-image image{
+  width: 100%;
+}
+.not-find .not-find-text{
+  font-size: 28rpx;
+  color: #999999;
+  text-align: center;
+}
+/* 无数据 */
+/* 主体内容 */

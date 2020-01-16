@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userInfo: {
+      user_id: 1,
+      user_head: "../../images/head/02.jpg"
+    }
   },
 
   /**

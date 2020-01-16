@@ -1,2 +1,14 @@
 <!--pages/myUserInfo/index.wxml-->
-<text>pages/myUserInfo/index.wxml</text>
+<!-- 头部信息 -->
+<view class="header-container">
+  <view class="header-title">个人信息</view>
+  <view class="header-describe">为了更好的服务和使用，请尽量完善您的个人信息。</view>
+</view>
+<!-- 头部信息 -->
+
+<view class="user-container">
+    <view class="user-head">
+      <image src="{{userInfo.user_head}}"></image>
+    </view>
+    <view class="user-info"></view>
+</view>

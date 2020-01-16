@@ -1,2 +1,37 @@
 <!--pages/IntegralDetails/index.wxml-->
-<text>pages/IntegralDetails/index.wxml</text>
+<!-- 头部 -->
+<view class="header-container">
+  <view class="header-bg">
+    <image src="../../images/integral_bg.png"></image>
+  </view>
+  <view class="header-title">当前积分</view>
+  <view class="header-number">{{currentIntegral}}</view>
+</view>
+<!-- 头部 -->
+
+<!-- 主体 -->
+<view class="body-container">
+  <view class="body-title">
+    <picker mode="date" value="{{month}}" start="2020-01" end="2025-01" fields="month" bindchange="bindDateChange">
+      <view class="month-picker">
+        <text>{{month}}</text>
+        <i class="iconfont iconcalendar"></i>
+      </view>
+    </picker>
+  </view>
+
+  <view class="body-content">
+    <view class="record-item" wx:for="{{recordData}}">
+        <view class="record-title">
+          <text class="title-word">{{item.describe}}</text>
+          <text wx:if="{{item.type==0}}" class="title-add-number">+{{item.number}}</text>
+          <text wx:elif="{{item.type==1}}" class="title-sub-number">-{{item.number}}</text>
+        </view>
+        <view class="record-detail">
+          <text class="record-datetime">{{item.datetime}}</text>
+          <text class="record-balance">余额：{{item.balance}}</text>
+        </view>
+    </view>
+  </view>
+</view>
+<!-- 主体 -->

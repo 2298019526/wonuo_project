@@ -1,2 +1,43 @@
-<!--pages/myReceive/index.wxml-->
-<text>pages/myReceive/index.wxml</text>
+<!--pages/myRelease/index.wxml-->
+<!-- 导航标签 -->
+<view class="nav-container">
+  <view class="nav-left {{currentNav==0?'nav-current':''}}" data-type="0" bindtap="navClick">进行中</view>
+  <view class="nav-right {{currentNav==1?'nav-current':''}}" data-type="1" bindtap="navClick">已完结</view>
+</view>
+<!-- 导航标签 -->
+
+<!-- 主体内容 -->
+<view class="reward-container" wx:if="{{rewardData.length>0}}">
+  <view class="reward-item" wx:for="{{rewardData}}" data-id="{{item.event_id}}}" bindtap="eventClick" hover-class="active">
+    <view class="reward-head">
+      <image src="{{item.event_user_head}}"></image>
+    </view>
+    <view class="reward-content">
+      <view class="reward-title">
+        <view class="reward-title-text">{{item.event_title}}</view>
+        <view class="reward-money {{currentNav==1?'reward-finish':''}}"><i class="iconfont iconconsumption"></i> {{item.event_reward}}</view>
+      </view>
+      <view class="reward-datetime">
+        发布时间：{{item.event_release_time}}
+      </view>
+      <view class="reward-datetime" wx:if="{{currentNav==1}}">
+        完结时间：{{item.event_finish_time}}
+      </view>
+      <view class="reward-address">
+        <view class="reward-address-text">{{item.event_address}}</view>
+      </view>
+      <view class="reward-status" wx:if="{{currentNav==1}}">
+        状态：<text wx:if="{{item.event_status==3}}" class="finish">完结</text><text wx:elif="{{item.event_status==4}}" class="overtime">超时完结</text>
+      </view>
+    </view>
+  </view>
+</view>
+<block wx:if="{{rewardData.length==0}}">
+  <view class="not-find">
+    <view class="not-find-image">
+      <image mode="widthFix" src="../../images/no_data.jpg"></image>
+    </view>
+    <view class="not-find-text">暂无数据</view>
+  </view>
+</block>
+<!-- 主体内容 -->
