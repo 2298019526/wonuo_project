@@ -1,0 +1,18 @@
+.alert-container{
+    width: 20%;
+    position: fixed;
+    top: 200px;
+    left: 40%;
+    animation:showAlert 1s;
+    -webkit-animation:showAlert 0.5s; /* Safari 和 Chrome */
+    z-index: 999999999;
+}
+@keyframes showAlert{
+    from {top: -200px;opacity: 0;}
+    to {top: 200px;opacity: 1;}
+}
+
+@-webkit-keyframes showAlert{ /*Safari and Chrome*/
+    from {top: -200px;opacity: 0;}
+    to {top: 200px;opacity: 1;}
+}
