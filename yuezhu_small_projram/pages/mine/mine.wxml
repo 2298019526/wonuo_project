@@ -21,7 +21,7 @@
       </view>
     </view>
     <view class="header-other">
-      <view class="user-integral">剩余积分：{{userInfo.user_integral}}</view>
+      <view class="user-integral">积分：{{userInfo.user_integral}}</view>
     </view>
   </view>
 </view>
@@ -42,7 +42,7 @@
     <view class="item-right"><i class="iconfont iconarrow-right"></i></view>
   </navigator>
   <navigator url="../myUserInfo/index" class="menu-item">
-    <view class="item-left"><i class="iconfont icongerenxinxi"></i> 个人信息</view>
+    <view class="item-left"><i class="iconfont icongerenxinxi"></i> 个人资料</view>
     <view class="item-right"><text class="right-text grey-text" hidden="{{userInfoState}}">待完善</text><i class="iconfont iconarrow-right"></i></view>
   </navigator>
 </view>

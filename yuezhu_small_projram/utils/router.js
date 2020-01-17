@@ -21,6 +21,8 @@ const routeList = {
   receiveReward: domain + '/index/receiveReward',
   //获取悬赏流程页面数据
   getRewardProcess: domain + '/index/getRewardProcess',
+  //结束悬赏
+  endTheReward: domain + '/index/endTheReward',
   //发布悬赏
   release: domain + '/index/release',
   //获取个人中心悬赏信息

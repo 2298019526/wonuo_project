@@ -145,8 +145,20 @@ Page({
   },
 
   //结束悬赏点击事件
-  overReward: function(){
+  finishReward: function(){
+    let that = this;
 
+    wx.showModal({
+      title: '确认结束？',
+      content: '请确认悬赏完成后结束悬赏。',
+      success: function(res){
+        if(res.confirm){
+          that.endTheReward();
+        }else{
+
+        }
+      }
+    })
   },
 
   //计算倒计时
@@ -182,6 +194,37 @@ Page({
         countDown: countDownStr
       })
 
+    })
+  },
+
+  //结束悬赏
+  endTheReward: function(){
+    let that = this;
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
+
+    wx.request({
+      url: routeList.endTheReward,
+      data: {
+
+      },
+      complete: function(){
+        wx.hideLoading();
+      },
+      success: function(res){
+        if(res.data.code=='0'){
+          wx.showToast({
+            title: '成功完结',
+          })
+        }else{
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none'
+          })
+        }
+      }
     })
   }
 })

@@ -1,14 +1,56 @@
 <!--pages/myUserInfo/index.wxml-->
 <!-- 头部信息 -->
 <view class="header-container">
-  <view class="header-title">个人信息</view>
-  <view class="header-describe">为了更好的服务和使用，请尽量完善您的个人信息。</view>
+  <view class="header-title">个人资料</view>
+  <view class="header-describe">为了更好的服务和使用，请尽量完善您的个人资料。</view>
 </view>
 <!-- 头部信息 -->
 
+<!-- 头像姓名资料 -->
 <view class="user-container">
     <view class="user-head">
       <image src="{{userInfo.user_head}}"></image>
     </view>
-    <view class="user-info"></view>
+    <view class="user-info">
+      <view class="user-name">{{userInfo.user_name}}</view>
+      <view class="user-gender">
+        <picker bindchange="bindValueChange" data-type="gender" range-key="value" value="{{genderIndex}}" range="{{genderArr}}">
+          <view class="picker">
+            <text>{{genderArr[genderIndex].value}}</text>
+            <i class="iconfont iconeditor"></i>
+          </view>
+        </picker>
+      </view>
+    </view>
 </view>
+<!-- 头像姓名资料 -->
+
+<!-- 其他 -->
+<view class="data-container">
+  <view class="data-line">
+    <view class="line-left">真实姓名：</view>
+    <view class="line-right">
+      <input type="text" value="{{userInfo.user_real_name}}" placeholder="请输入您的真实姓名" placeholder-style="color:#dddddd;" data-type="realName" bindinput="bindValueChange"></input>
+    </view>
+  </view>
+  <view class="data-line">
+    <view class="line-left">联系电话：</view>
+    <view class="line-right">
+      <input type="text" value="{{userInfo.user_phone}}" placeholder="请输入您的电话号码" placeholder-style="color:#dddddd;" data-type="phone" bindinput="bindValueChange"></input>
+    </view>  
+  </view>
+  <view class="data-line">
+    <view class="line-left">常住地址：</view>
+    <view class="line-right">
+      <input type="text" value="{{userInfo.user_address}}" placeholder="请填写您的常住地址" placeholder-style="color:#dddddd;" data-type="address" bindinput="bindValueChange"></input>
+      <view class="address-icon" bindtap="chooseAddress"><i class="iconfont iconmap2"></i></view>
+    </view>  
+  </view>
+</view>
+<!-- 其他 -->
+
+<!-- 底部按钮 -->
+<view class="footer-container">
+  <view class="save-button" hover-class="button-active" bindtap="savePersionData">保 存</view>
+</view>
+<!-- 底部按钮 -->

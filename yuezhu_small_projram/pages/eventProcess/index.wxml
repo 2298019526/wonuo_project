@@ -78,8 +78,8 @@
 <!-- 结束 -->
 
 <!-- 确认完结 -->
-<view class="footer-container">
+<view class="footer-container" wx:if="{{rewardDetail.event_status==2}}">
   <view class="over-count-down">剩余时间：{{countDown}}</view>
-  <view class="over-button" hover-class="button-active" bindtap="overReward">结束悬赏</view>
+  <view class="over-button" hover-class="button-active" bindtap="finishReward">结束悬赏</view>
 </view>
 <!-- 确认完结 -->

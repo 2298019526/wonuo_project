@@ -19,6 +19,7 @@
 }
 /* 头部信息 */
 
+/* 头像姓名资料 */
 .user-container{
   width: calc(100% - 40rpx);
   margin: 20rpx auto;
@@ -32,6 +33,7 @@
 .user-head{
   width: 120rpx;
   height: 120rpx;
+  flex-shrink: 0;
   border-radius: 50%;
 }
 .user-head image{
@@ -40,3 +42,95 @@
   border-radius: 50%;
   overflow: hidden;
 }
+.user-info{
+  width: 100%;
+  flex: 1;
+  margin-left: 20rpx;
+}
+.user-info .user-name{
+  display: flex;
+  align-items: center;
+  font-size: 42rpx;
+  font-weight: 600;
+  color: #666666;
+}
+.user-info .user-gender{
+  font-size: 32rpx;
+  color: #999999;
+}
+.picker{
+  display: flex;
+  align-items: center;
+}
+.user-info .user-gender .iconfont{
+  font-size: 40rpx;
+  color: #e9524b;
+  margin-left: 5rpx;
+  margin-top: 5rpx;
+}
+/* 头像姓名资料 */
+
+/* 其他 */
+.data-container{
+  width: calc(100% - 40rpx);
+  margin: 20rpx auto;
+  box-shadow: 0 0 10rpx #dddddd;
+}
+.data-container .data-line{
+  width: 100%;
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #f1f1f1;
+}
+.data-container .data-line:last-child{
+  border-bottom: 0;
+}
+.data-container .data-line .line-left{
+  width: 200rpx;
+  flex-shrink: 0;
+  font-size: 32rpx;
+  color: #666666;
+}
+.data-container .data-line .line-right{
+  width: 100%;
+  flex: 1;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.data-container .data-line .line-right input{
+  width: 100%;
+  flex: 1;
+}
+.data-container .data-line .address-icon{
+  flex-shrink: 0;
+}
+.data-container .data-line .address-icon .iconfont{
+  font-size: 50rpx;
+  color: #e9524b;
+}
+/* 其他 */
+
+/* 底部按钮 */
+.footer-container{
+  margin-top: 40rpx;
+  width: 100%;
+  padding: 0rpx 20rpx;
+}
+.footer-container .save-button{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  color: #ffffff;
+  background-color: #e9524b;
+  text-align: center;
+  border-radius: 10rpx;
+}
+.footer-container .button-active{
+  background-color: #BF360C;
+}
+/* 底部按钮 */

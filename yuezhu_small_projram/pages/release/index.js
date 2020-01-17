@@ -9,14 +9,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {
-      user_id: 1,
-      user_name: "我是发布的人",
-      user_head: "../../images/head/01.jpg",
-      user_phone: "18290261570",
-      user_real_name: "王先生",
-      integral: 1200
-    },
     rewardTitle: "",
     rewardDescribe: "",
     rewardAddress: "",
@@ -67,6 +59,14 @@ Page({
       this.setData({
         rewardAddress: app.globalData.address
       })
+    }
+    try{
+      this.setData({
+        rewardContacts: app.userInfo.user_real_name,
+        rewardContactnumber: app.userInfo.user_phone
+      })
+    }catch(err){
+
     }
   },
 
