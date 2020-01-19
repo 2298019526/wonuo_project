@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
-  <title>控制台</title>
+  <title>搜索标签</title>
 
   <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/modules/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/modules/ionicons/css/ionicons.min.css">
@@ -11,8 +11,18 @@
   <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/css/demo.css">
   <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/css/style.css">
   <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/css/alerts.css">
+  <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/css/loading.css">
   <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/modules/summernote/summernote-lite.css">
   <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/modules/flag-icon-css/css/flag-icon.min.css">
+  <style>
+      .pagination .active{
+        background-color: #574B90;
+        color: #ffffff;
+      }
+      #tableData .detail{
+          margin-right: 5px;
+      }
+  </style>
 </head>
 
 <body>
@@ -64,7 +74,7 @@
           </div>
           <ul class="sidebar-menu">
             <li class="menu-header">菜单栏</li>
-            <li class="active">
+            <li>
               <a href="../console/console"><i class="ion ion-speedometer"></i><span>控制台</span></a>
             </li>
             <li>
@@ -73,12 +83,12 @@
             <li>
               <a href="../reward/rewardManagement"><i class="ion ion-ios-list"></i><span>悬赏管理</span></a>
             </li>
-            <li>
+            <li class="active">
                 <a href="#" class="has-dropdown"><i class="ion ion-ios-gear"></i><span>系统设置</span></a>
                 <ul class="menu-dropdown">
                   <li><a href="../system/SystemParam"><i class="ion ion-ios-paper-outline"></i> 参数设置</a></li>
                   <li><a href="../system/SystemRewardClass"><i class="ion ion-ios-list-outline"></i> 悬赏分类</a></li>
-                  <li><a href="../system/SystemSearchLabel"><i class="ion ion-ios-pricetags-outline"></i> 搜索标签</a></li>
+                  <li class="active"><a href="../system/SystemSearchLabel"><i class="ion ion-ios-pricetags-outline"></i> 搜索标签</a></li class="active">
                   <li><a href="../system/SystemIndexBanner"><i class="ion ion-images"></i> 首页轮播</a></li>
                 </ul>
             </li>
@@ -95,91 +105,119 @@
       <!-- 主体内容 -->
       <div class="main-content">
         <section class="section">
-          <h1 class="section-header">
-            <div>控制台</div>
-          </h1>
-          <div class="row">
-            <div class="col-lg-3 col-md-6 col-12">
-              <a href="../user/userManagement" class="card card-sm-3">
-                <div class="card-icon bg-primary">
-                  <i class="ion ion-person"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>新增用户</h4>
-                  </div>
-                  <div class="card-body">
-                    10
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-              <a href="../reward/rewardManagement" class="card card-sm-3">
-                <div class="card-icon bg-success">
-                  <i class="ion ion-ios-paper-outline"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>新增悬赏</h4>
-                  </div>
-                  <div class="card-body">
-                    15
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-              <a href="../reward/rewardManagement" class="card card-sm-3">
-                <div class="card-icon bg-warning">
-                  <i class="ion ion-paper-airplane"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>完成悬赏</h4>
-                  </div>
-                  <div class="card-body">
-                    8
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-lg-3 col-md-6 col-12">
-              <a href="../reward/rewardManagement" class="card card-sm-3">
-                <div class="card-icon bg-danger">
-                  <i class="ion ion-record"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>超时悬赏</h4>
-                  </div>
-                  <div class="card-body">
-                    20
-                  </div>
-                </div>
-              </a>
-            </div>                  
-          </div>
-          <div class="row">
-            <div class="col-lg-12 col-md-12 col-12 col-sm-12">
-              <div class="card">
-                <div class="card-header">
-                  <div class="float-right">
-                    <div class="btn-group">
-                      <a href="#" class="btn active">本周</a>
+            <h1 class="section-header">
+                <div>搜索标签</div>
+            </h1>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                        <div class="float-right">
+                            <a id="createNewLabel" class="btn btn-primary" style="color: #ffffff;">新增标签</a>
+                        </div>
+                        <h4>标签列表</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>名称名称</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tableData">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-footer">
+                                <nav class="d-inline-block">
+                                <ul class="pagination mb-0" id="pageContainer">
+                                    
+                                </ul>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <h4>统计</h4>
-                </div>
-                <div class="card-body">
-                  <canvas id="myChart" height="158"></canvas>
-                </div>
-              </div>
+                </div>  
             </div>
-          </div>
         </section>
       </div>
       <!-- 主体内容 -->
+
+      <!-- 弹窗 -->
+      <div class="popup-container" id="popupContainer">
+        <div class="popup-main">
+            <div class="popup-content">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>新增标签</h4>
+                            <div class="popup-close" id="closePopup"><i class="ion ion-close-round"></i></div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-line">
+                                <div class="line-left">标签名称：</div>
+                                <div class="line-right" id="userName">
+                                    <input type="text" class="form-control" id="labelValue" placeholder="请输入搜索标签名称">
+                                </div>
+                            </div>
+                            <div class="card-line" style="justify-content: center;">
+                                <a id="addLabel" class="btn btn-primary" style="color: #ffffff;">提 交</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- 弹窗 -->
+
+      <!-- 确认弹窗 -->
+      <div class="popup-container" id="confirmPopup">
+        <div class="popup-mask"></div>
+        <div class="popup-main">
+            <div class="popup-content popup-confirm">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>提示</h4>
+                                <div class="popup-close" id="closeDelPopup"><i class="ion ion-close-round"></i></div>
+                            </div>
+                            <div class="card-body">
+                                <div class="delete-content">是否确认删除？删除后数据将无法恢复。</div>
+                                <div class="delete-buttons">
+                                    <a id="cancelDel" class="btn btn-sm">取消</a>
+                                    <a data-id="" id="confirmDel" class="btn btn-sm btn-primary">确认</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- 确认弹窗 -->
+
+
+      <!-- 加载动画 -->
+      <div class="loading-container" id="loading">
+        <div class="loading-mask"></div>
+        <div class="loading-main">
+            <div class="loading-content">
+                <div class="loading-icon">
+                    <i class="ion ion-load-c"></i>
+                </div>
+                <div class="loading-text">加载中...</div>
+            </div>
+        </div>
+      </div>
+      <!-- 加载动画 -->
     </div>
   </div>
 
@@ -190,33 +228,177 @@
   <script src="/yuezhu_admin/public/static/dist/modules/nicescroll/jquery.nicescroll.min.js"></script>
   <script src="/yuezhu_admin/public/static/dist/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
   <script src="/yuezhu_admin/public/static/dist/js/sa-functions.js"></script>
-  
   <script src="/yuezhu_admin/public/static/dist/modules/chart.min.js"></script>
   <script src="/yuezhu_admin/public/static/dist/modules/summernote/summernote-lite.js"></script>
-  <script>
-    getStartData();
-
-    function getStartData(){
-      $.ajax({
-        url: "getSystemParamData",
-        type: "POST",
-        success: function(res){
-          console.log(res);
-          if(res.code=='0'){
-              
-          }else{
-            alert(res.msg);
-          }
-        },
-        error: function(){
-          alert("获取数据失败！");
-        }
-      })
-    }
-
-  </script>
   <script src="/yuezhu_admin/public/static/dist/js/scripts.js"></script>
   <script src="/yuezhu_admin/public/static/dist/js/custom.js"></script>
   <script src="/yuezhu_admin/public/static/dist/js/demo.js"></script>
+  <script src="/yuezhu_admin/public/static/dist/js/alerts.js"></script>
+  <script>
+    var labelList = []; //标签列表数据
+
+    getLabelData();
+
+    //新增标签点击事件
+    $("#createNewLabel").click(function(){
+        $("#labelValue").val("");
+
+        $("#popupContainer").show();
+    })
+
+    //新增标签提交按钮点击事件
+    $("#addLabel").click(function(){
+        var value = $("#labelValue").val();
+
+        if(value.length==0){
+            alerts.show({
+                type: 'warning',
+                title: "提示",
+                content: "分类名称不能为空",
+                direction: 2000
+            })
+            return false;
+        }
+
+        $("#loading").show();
+        $.ajax({
+            url: "addSearchLabel",
+            type: "POST",
+            data: {
+                value: value
+            },
+            complete: function(){
+                $("#loading").hide();
+                $("#popupContainer").hide();
+            },
+            success: function(res){
+                //console.log(res);
+                if(res.code=='0'){
+                    getLabelData();
+                }else{
+                    alerts.show({
+                        type: 'warning',
+                        title: "提示",
+                        content: res.msg,
+                        direction: 2000
+                    })
+                }
+            },
+            error: function(){
+                alert("系统异常");
+            }
+        })
+    });
+
+    //搜索点击事件
+    $("#searchUser").click(function(){
+        searchValue = $("#searchValue").val();
+        console.log(searchValue);
+        getUserData();
+    })
+
+    //关闭弹窗点击事件
+    $("#closePopup").click(function(){
+        $("#popupContainer").hide();
+    })
+
+    //删除按钮点击事件
+    $(document).on("click","#tableData .delete",function(){
+        var id = $(this).attr("data-id");
+        $("#confirmDel").attr("data-id",id);
+        $("#confirmPopup").show();
+    })
+
+    //确认弹窗关闭按钮
+    $("#closeDelPopup").click(function(){
+        $("#confirmPopup").hide();
+    })
+
+    //确认弹窗取消按钮
+    $("#cancelDel").click(function(){
+        $("#confirmPopup").hide();
+    })
+    
+    //确认弹窗确认按钮
+    $("#confirmDel").click(function(){
+        var id = $(this).attr("data-id");
+        $("#confirmPopup").hide();
+        $("#loading").show();
+        $.ajax({
+            url: "deleteLabel",
+            type: "POST",
+            data: {
+                id: id
+            },
+            complete: function(){
+                $("#loading").hide();
+            },
+            success: function(res){
+                console.log(res);
+                if(res.code=='0'){
+                    getLabelData();
+                }else{
+                    alerts.show({
+                        type: 'warning',
+                        title: "提示",
+                        content: res.msg,
+                        direction: 2000
+                    })
+                }
+            },
+            error: function(){
+                alert("系统异常");
+            }
+        })
+
+    })
+
+    function getLabelData(){ //获取数据
+        $("#loading").show();
+
+
+        $.ajax({
+            url: "getLabelData",
+            type: "POST",
+            complete: function(){
+                $("#loading").hide();
+            },
+            success: function(res){
+                console.log(res);
+                if(res.code=='0'){
+                    labelList = res.data;
+                    setTableData(res.data);
+                }else{
+                    alerts.show({
+                        type: 'warning',
+                        title: "提示",
+                        content: res.msg,
+                        direction: 2000
+                    })
+                }
+            },
+            error: function(){
+                alert("系统异常");
+            }
+        })
+    }
+
+    function setTableData(data){ //设置表格
+        $("#tableData").empty();
+
+        for(var i=0;i<data.length;i++){
+            var line = `<tr>
+                            <td>${i+1}</td>
+                            <td>${data[i].value}</td>
+                            <td>
+                                <a data-id="${data[i].id}" class="delete btn btn-action btn-secondary btn-danger">删除</a>
+                            </td>
+                        </tr>`;
+            $("#tableData").append(line);
+        }
+
+    }
+
+  </script>
 </body>
 </html>
