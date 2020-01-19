@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+  <title>悬赏管理</title>
+
+  <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/modules/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/css/demo.css">
+  <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/css/style.css">
+  <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/css/alerts.css">
+  <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/css/loading.css">
+  <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/modules/summernote/summernote-lite.css">
+  <link rel="stylesheet" href="/yuezhu_admin/public/static/dist/modules/flag-icon-css/css/flag-icon.min.css">
+  <style>
+      .pagination .active{
+        background-color: #574B90;
+        color: #ffffff;
+      }
+      #tableData .td-over{
+        max-width: 250px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      #tableData .detail{
+          margin-right: 5px;
+      }
+      .card .card-header .float-right{
+          display: flex;
+          align-items: center;
+      }
+      .card .card-header .float-right .btn-group{
+          margin-right: 10px;
+      }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="main-wrapper">
+      <!-- 头部导航 -->
+      <div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar">
+        <form class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="ion ion-navicon-round"></i></a></li>
+            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="ion ion-search"></i></a></li>
+          </ul>
+          <div class="search-element">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn" type="submit"><i class="ion ion-search"></i></button>
+          </div>
+        </form>
+        <ul class="navbar-nav navbar-right">
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg">
+            <i class="ion ion-android-person d-lg-none"></i>
+            <div class="d-sm-none d-lg-inline-block">Hi, admin</div></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a href="../login/login" class="dropdown-item has-icon">
+                <i class="ion ion-log-out"></i> 注销
+              </a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <!-- 头部导航 -->
+
+      <!-- 左侧菜单 -->
+      <div class="main-sidebar">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+            <a href="../console/console">悦助后台管理系统</a>
+          </div>
+          <div class="sidebar-user">
+            <div class="sidebar-user-picture">
+              <img alt="image" src="/yuezhu_admin/public/static/dist/img/avatar/avatar-1.jpeg">
+            </div>
+            <div class="sidebar-user-details">
+              <div class="user-name">admin</div>
+              <div class="user-role">
+                管理员
+              </div>
+            </div>
+          </div>
+          <ul class="sidebar-menu">
+            <li class="menu-header">菜单栏</li>
+            <li>
+              <a href="../console/console"><i class="ion ion-speedometer"></i><span>控制台</span></a>
+            </li>
+            <li>
+              <a href="../user/userManagement"><i class="ion ion-ios-people"></i><span>用户管理</span></a>
+            </li>
+            <li class="active">
+              <a href="../reward/rewardManagement"><i class="ion ion-ios-list"></i><span>悬赏管理</span></a>
+            </li>
+            <li>
+                <a href="#" class="has-dropdown"><i class="ion ion-ios-gear"></i><span>系统设置</span></a>
+                <ul class="menu-dropdown">
+                  <li><a href="../system/SystemParam"><i class="ion ion-ios-paper-outline"></i> 参数设置</a></li>
+                  <li><a href="../system/SystemRewardClass"><i class="ion ion-ios-list-outline"></i> 悬赏分类</a></li>
+                  <li><a href="../system/SystemSearchLabel"><i class="ion ion-ios-pricetags-outline"></i> 搜索标签</a></li>
+                  <li><a href="../system/SystemIndexBanner"><i class="ion ion-images"></i> 首页轮播</a></li>
+                </ul>
+            </li>
+          </ul>
+          <div class="p-3 mt-4 mb-4">
+            <a href="../login/login" class="btn btn-danger btn-shadow btn-round has-icon has-icon-nofloat btn-block">
+              <i class="ion ion-help-buoy"></i> <div>注销</div>
+            </a>
+          </div>
+        </aside>
+      </div>
+      <!-- 左侧菜单 -->
+
+      <!-- 主体内容 -->
+      <div class="main-content">
+        <section class="section">
+            <h1 class="section-header">
+                <div>悬赏管理</div>
+            </h1>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                        <div class="float-right">
+                            <div class="btn-group" id="eventStatus">
+                                <a data-status="0" class="label btn active">全部</a>
+                                <a data-status="1" class="label btn">未接取</a>
+                                <a data-status="2" class="label btn">进行中</a>
+                                <a data-status="3" class="label btn">已完结</a>
+                                <a data-status="4" class="label btn">超时完结</a>
+                            </div>
+                            <div class="input-group">
+                                <input id="searchValue" type="text" class="form-control" placeholder="请输入悬赏名称">
+                                <div class="input-group-btn">
+                                <button id="searchUser" class="btn btn-secondary"><i class="ion ion-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>悬赏列表</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>悬赏标题</th>
+                                            <th>悬赏类型</th>
+                                            <th>悬赏积分</th>
+                                            <th>发布人</th>
+                                            <th>联系电话</th>
+                                            <th>发布时间</th>
+                                            <th>悬赏状态</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tableData">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- 分页组件 -->
+                            <div class="card-footer">
+                                <nav class="d-inline-block">
+                                <ul class="pagination mb-0" id="pageContainer">
+                                    
+                                </ul>
+                                </nav>
+                            </div>
+                            <!-- 分页组件 -->
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </section>
+      </div>
+      <!-- 主体内容 -->
+
+      <!-- 弹窗 -->
+      <div class="popup-container" id="popupContainer">
+        <div class="popup-main">
+            <div class="popup-content">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>悬赏信息详情</h4>
+                            <div class="popup-close" id="closePopup"><i class="ion ion-close-round"></i></div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-line">
+                                <div class="line-left">悬赏标题：</div>
+                                <div class="line-right">
+                                    <div class="line-info">
+                                        <span id="rewardTitle"></span>
+                                        <div class="edit-icon"><i class="ion ion-compose"></i></div>
+                                    </div>
+                                    <div class="line-edit">
+                                        <div class="edit-box">
+                                            <div class="edit-control">
+                                                <input type="text" class="form-control" id="rewardTitleInput" placeholder="请输入悬赏标题">
+                                            </div>
+                                            <div class="edit-icon" data-type="title"><i class="ion ion-android-checkbox-outline"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-line">
+                                <div class="line-left">悬赏描述：</div>
+                                <div class="line-right">
+                                    <div class="line-info">
+                                        <span id="rewardDescribe"></span>
+                                        <div class="edit-icon"><i class="ion ion-compose"></i></div>
+                                    </div>
+                                    <div class="line-edit">
+                                        <div class="edit-box">
+                                            <div class="edit-control">
+                                                <textarea id="rewardDescribeInput" class="form-control" rows="3"></textarea>
+                                            </div>
+                                            <div class="edit-icon" data-type="describe"><i class="ion ion-android-checkbox-outline"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-line">
+                                <div class="line-left">悬赏类型：</div>
+                                <div class="line-right">
+                                    <div class="line-info">
+                                        <span id="rewardClass"></span>
+                                        <div class="edit-icon"><i class="ion ion-compose"></i></div>
+                                    </div>
+                                    <div class="line-edit">
+                                        <div class="edit-box">
+                                            <div class="edit-control" id="rewardTypeRadio">
+                                                
+                                            </div>
+                                            <div class="edit-icon" data-type="class"><i class="ion ion-android-checkbox-outline"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-line">
+                                <div class="line-left">悬赏状态：</div>
+                                <div class="line-right">
+                                    <div class="line-info">
+                                        <div id="rewardStatus"></div>
+                                        <!-- <div class="edit-icon"><i class="ion ion-compose"></i></div> -->
+                                    </div>
+                                    <div class="line-edit">
+                                        <div class="edit-box">
+                                            <div class="edit-control"></div>
+                                            <div class="edit-icon"><i class="ion ion-android-checkbox-outline"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-line">
+                                <div class="line-left">发布人：</div>
+                                <div class="line-right">
+                                    <div class="line-info">
+                                        <span id="rewardUser"></span>
+                                        <!-- <div class="edit-icon"><i class="ion ion-compose"></i></div> -->
+                                    </div>
+                                    <div class="line-edit">
+                                        <div class="edit-box">
+                                            <div class="edit-control"></div>
+                                            <div class="edit-icon"><i class="ion ion-android-checkbox-outline"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-line">
+                                <div class="line-left">联系人姓名：</div>
+                                <div class="line-right">
+                                    <div class="line-info">
+                                        <span id="rewardContact"></span>
+                                        <div class="edit-icon"><i class="ion ion-compose"></i></div>
+                                    </div>
+                                    <div class="line-edit">
+                                        <div class="edit-box">
+                                            <div class="edit-control">
+                                                <input type="text" class="form-control" id="rewardContactInput" placeholder="请输入联系人姓名">
+                                            </div>
+                                            <div class="edit-icon" data-type="contacts"><i class="ion ion-android-checkbox-outline"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-line">
+                                <div class="line-left">联系人电话：</div>
+                                <div class="line-right">
+                                    <div class="line-info">
+                                        <span id="rewardContactPhone"></span>
+                                        <div class="edit-icon"><i class="ion ion-compose"></i></div>
+                                    </div>
+                                    <div class="line-edit">
+                                        <div class="edit-box">
+                                            <div class="edit-control">
+                                                <input type="text" class="form-control" id="rewardContactPhoneInput" placeholder="请输入联系人电话">
+                                            </div>
+                                            <div class="edit-icon" data-type="contactPhone"><i class="ion ion-android-checkbox-outline"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-line">
+                                <div class="line-left">悬赏积分：</div>
+                                <div class="line-right">
+                                    <div class="line-info">
+                                        <span id="rewardIntegral"></span>
+                                        <div class="edit-icon"><i class="ion ion-compose"></i></div>
+                                    </div>
+                                    <div class="line-edit">
+                                        <div class="edit-box">
+                                            <div class="edit-control">
+                                                <input type="text" class="form-control" id="rewardIntergralInput" placeholder="请输入悬赏积分">
+                                            </div>
+                                            <div class="edit-icon" data-type="intergral"><i class="ion ion-android-checkbox-outline"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-line">
+                                <div class="line-left">悬赏地址：</div>
+                                <div class="line-right">
+                                    <div class="line-info">
+                                        <span id="rewardAddress"></span>
+                                        <!-- <div class="edit-icon"><i class="ion ion-compose"></i></div> -->
+                                    </div>
+                                    <div class="line-edit">
+                                        <div class="edit-box">
+                                            <div class="edit-control"></div>
+                                            <div class="edit-icon"><i class="ion ion-android-checkbox-outline"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-line">
+                                <div class="line-left">发布时间：</div>
+                                <div class="line-right">
+                                    <div class="line-info">
+                                        <span id="rewardReleaseTime"></span>
+                                        <!-- <div class="edit-icon"><i class="ion ion-compose"></i></div> -->
+                                    </div>
+                                    <div class="line-edit">
+                                        <div class="edit-box">
+                                            <div class="edit-control"></div>
+                                            <div class="edit-icon"><i class="ion ion-android-checkbox-outline"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-line">
+                                <div class="line-left">悬赏接取人：</div>
+                                <div class="line-right">
+                                    <div class="line-info">
+                                        <span id="rewardReceiveUser"></span>
+                                        <!-- <div class="edit-icon"><i class="ion ion-compose"></i></div> -->
+                                    </div>
+                                    <div class="line-edit">
+                                        <div class="edit-box">
+                                            <div class="edit-control"></div>
+                                            <div class="edit-icon"><i class="ion ion-android-checkbox-outline"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-line">
+                                <div class="line-left">悬赏接取时间：</div>
+                                <div class="line-right">
+                                    <div class="line-info">
+                                        <span id="rewardReceiveTime"></span>
+                                        <!-- <div class="edit-icon"><i class="ion ion-compose"></i></div> -->
+                                    </div>
+                                    <div class="line-edit">
+                                        <div class="edit-box">
+                                            <div class="edit-control"></div>
+                                            <div class="edit-icon"><i class="ion ion-android-checkbox-outline"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-line">
+                                <div class="line-left">悬赏完结时间：</div>
+                                <div class="line-right">
+                                    <div class="line-info">
+                                        <span id="rewardFinishTime"></span>
+                                        <!-- <div class="edit-icon"><i class="ion ion-compose"></i></div> -->
+                                    </div>
+                                    <div class="line-edit">
+                                        <div class="edit-box">
+                                            <div class="edit-control"></div>
+                                            <div class="edit-icon"><i class="ion ion-android-checkbox-outline"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- 弹窗 -->
+
+      <!-- 确认弹窗 -->
+      <div class="popup-container" id="confirmPopup">
+        <div class="popup-mask"></div>
+        <div class="popup-main">
+            <div class="popup-content popup-confirm">
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>提示</h4>
+                                <div class="popup-close" id="closeDelPopup"><i class="ion ion-close-round"></i></div>
+                            </div>
+                            <div class="card-body">
+                                <div class="delete-content">是否确认删除？删除后数据将无法恢复。</div>
+                                <div class="delete-buttons">
+                                    <a id="cancelDel" class="btn btn-sm">取消</a>
+                                    <a data-eventID="" id="confirmDel" class="btn btn-sm btn-primary">确认</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- 确认弹窗 -->
+
+
+      <!-- 加载动画 -->
+      <div class="loading-container" id="loading">
+        <div class="loading-mask"></div>
+        <div class="loading-main">
+            <div class="loading-content">
+                <div class="loading-icon">
+                    <i class="ion ion-load-c"></i>
+                </div>
+                <div class="loading-text">加载中...</div>
+            </div>
+        </div>
+      </div>
+      <!-- 加载动画 -->
+    </div>
+  </div>
+
+  <script src="/yuezhu_admin/public/static/dist/modules/jquery.min.js"></script>
+  <script src="/yuezhu_admin/public/static/dist/modules/popper.js"></script>
+  <script src="/yuezhu_admin/public/static/dist/modules/tooltip.js"></script>
+  <script src="/yuezhu_admin/public/static/dist/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/yuezhu_admin/public/static/dist/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="/yuezhu_admin/public/static/dist/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+  <script src="/yuezhu_admin/public/static/dist/js/sa-functions.js"></script>
+  <script src="/yuezhu_admin/public/static/dist/modules/chart.min.js"></script>
+  <script src="/yuezhu_admin/public/static/dist/modules/summernote/summernote-lite.js"></script>
+  <script src="/yuezhu_admin/public/static/dist/js/scripts.js"></script>
+  <script src="/yuezhu_admin/public/static/dist/js/custom.js"></script>
+  <script src="/yuezhu_admin/public/static/dist/js/demo.js"></script>
+  <script src="/yuezhu_admin/public/static/dist/js/alerts.js"></script>
+  <script>
+    var rewardStatus = '0'; //事件状态标签
+    var page = 1; //当前页码
+    var pageSize = 10; //每页的数据条数
+    var totalPage = 1; //总的页数
+    var searchValue = ""; //搜索框值
+    var rewardData = []; //用户列表数据
+    var currentInfo = {}; //当前的悬赏详情数据
+
+    getRwardData();
+    getRewardClass();
+    
+
+    //状态标签点击事件
+    $("#eventStatus .label").click(function(e){
+        $(this).addClass("active").siblings().removeClass("active");
+        var type = e.currentTarget.dataset.status;
+        rewardStatus = type;
+        getRwardData();
+    })
+
+    //搜索点击事件
+    $("#searchUser").click(function(){
+        searchValue = $("#searchValue").val();
+        console.log(searchValue);
+        getRwardData();
+    })
+
+    //详情按钮点击事件
+    $(document).on("click","#tableData .detail",function(){
+        var event_id = $(this).attr("data-eventID");
+        currentInfo = {};
+        for(var i=0;i<rewardData.length;i++){
+            if(rewardData[i].event_id==event_id){
+                currentInfo = rewardData[i];
+            }
+        }
+        $("#popupContainer").show();
+        setRewardDetail(currentInfo);
+    })
+
+    //详情弹窗修改按钮点击事件
+    $("#popupContainer .line-info .edit-icon").click(function(e){
+        $(this).parent(".line-info").hide().siblings(".line-edit").show();
+    })
+    
+    //详情弹窗完成修改按钮点击事件
+    $("#popupContainer .line-edit .edit-icon").click(function(e){
+        //$(this).parents(".line-edit").hide().siblings(".line-info").show();
+        var type = e.currentTarget.dataset.type;
+        updateRewardDetail($(this))
+    })
+
+    //详情弹窗关闭点击事件
+    $("#closePopup").click(function(){
+        $("#popupContainer").hide();
+
+        $("#popupContainer .card-line .line-info").show();
+        $("#popupContainer .card-line .line-edit").hide();
+    })
+
+    //删除按钮点击事件
+    $(document).on("click","#tableData .delete",function(){
+        var event_id = $(this).attr("data-eventID");
+        $("#confirmDel").attr("data-eventID",event_id);
+        $("#confirmPopup").show();
+    })
+
+    //删除弹窗关闭按钮
+    $("#closeDelPopup").click(function(){
+        $("#confirmPopup").hide();
+    })
+
+    //删除弹窗取消按钮
+    $("#cancelDel").click(function(){
+        $("#confirmPopup").hide();
+    })
+    
+    //删除弹窗确认按钮
+    $("#confirmDel").click(function(){
+        var event_id = $(this).attr("data-eventID");
+        $("#confirmPopup").hide();
+        $("#loading").show();
+        $.ajax({
+            url: "deleteReward",
+            type: "POST",
+            data: {
+                event_id: event_id
+            },
+            complete: function(){
+                $("#loading").hide();
+            },
+            success: function(res){
+                console.log(res);
+                if(res.code=='0'){
+                    getRwardData();
+                }else{
+                    alerts.show({
+                        type: 'warning',
+                        title: "提示",
+                        content: res.msg,
+                        direction: 2000
+                    })
+                }
+            },
+            error: function(){
+                alert("获取数据失败！");
+            }
+        })
+
+    })
+
+    //上一页点击事件
+    $(document).on("click", "#pageContainer #prevPage", function(){
+        if($(this).hasClass("disabled")) return false;
+        if(page==1) return false;
+        page--;
+        getRwardData();
+    })
+
+    //页码点击事件
+    $(document).on("click", "#pageContainer .page-number", function(){
+        if($(this).hasClass("active")) return false;
+        page = Number($(this).attr("data-page"));
+        getRwardData();
+    })
+
+    //下一页点击事件
+    $(document).on("click", "#pageContainer #nextPage", function(){
+        if($(this).hasClass("disabled")) return false;
+        if(page==totalPage) return false;
+        page++;
+        getRwardData();
+    })
+
+    function getRwardData(){ //获取数据
+        $("#loading").show();
+
+        var upData = {
+            page: page,
+            pageSize: pageSize
+        }
+        if(searchValue.length>0){
+            upData.searchValue = searchValue;
+        }
+        
+        if(rewardStatus!='0'){
+            upData.rewardStatus = rewardStatus;
+        }
+        $.ajax({
+            url: "getRwardData",
+            type: "POST",
+            data: upData,
+            complete: function(){
+                $("#loading").hide();
+            },
+            success: function(res){
+                console.log(res);
+                if(res.code=='0'){
+                    rewardData = res.data.list;
+                    totalPage = res.data.total;
+                    setTableData(res.data.list,res.data.total);
+                    if(currentInfo.event_id!=undefined){
+                        resetRewardDetail();
+                    }
+                }else{
+                    alerts.show({
+                        type: 'warning',
+                        title: "提示",
+                        content: res.msg,
+                        direction: 2000
+                    })
+                }
+            },
+            error: function(){
+                alert("获取数据失败！");
+            }
+        })
+    }
+
+    //更新数据
+    function updateRewardDetail(that){
+        var upData = {};
+        var title = $("#rewardTitleInput").val();
+        if(title.length==0){
+            alerts.show({
+                type: 'warning',
+                title: "提示",
+                content: "悬赏标题不能为空。",
+                direction: 2000
+            })
+            return false;
+        }
+        var describe = $("#rewardDescribeInput").val();
+        if(describe.length==0){
+            alerts.show({
+                type: 'warning',
+                title: "提示",
+                content: "悬赏内容不能为空。",
+                direction: 2000
+            })
+            return false;
+        }
+        var event_class = $("#rewardTypeRadio input[type='radio']:checked").val();
+
+        var contacts = $("#rewardContactInput").val();
+        if(contacts.length==0){
+            alerts.show({
+                type: 'warning',
+                title: "提示",
+                content: "悬赏联系人不能为空。",
+                direction: 2000
+            })
+            return false;
+        }
+        
+        var contactPhone = $("#rewardContactPhoneInput").val();
+        if(contactPhone.length==0){
+            alerts.show({
+                type: 'warning',
+                title: "提示",
+                content: "联系人电话不能为空。",
+                direction: 2000
+            })
+            return false;
+        }
+        
+        var intergral = $("#rewardIntergralInput").val();
+        if(intergral.length==0){
+            alerts.show({
+                type: 'warning',
+                title: "提示",
+                content: "悬赏积分不能为空。",
+                direction: 2000
+            })
+            return false;
+        }
+        upData.event_id = currentInfo.event_id;
+        upData.event_title = title;
+        upData.event_describe = describe;
+        upData.event_type = event_class;
+        upData.event_contacts = contacts;
+        upData.event_contact_phone = contactPhone;
+        upData.event_intergral = intergral;
+            
+        $("#loading").show();
+
+        $.ajax({
+            url: "updateRewardDetail",
+            type: "POST",
+            data: upData,
+            complete: function(){
+                $("#loading").hide();
+                that.parents(".line-edit").hide().siblings(".line-info").show();
+            },
+            success: function(res){
+                console.log(res);
+                if(res.code=='0'){
+                    getRwardData();
+                }else{
+                    alerts.show({
+                        type: 'warning',
+                        title: "提示",
+                        content: res.msg,
+                        direction: 2000
+                    })
+                }
+            },
+            error: function(){
+                alert("获取数据失败！");
+            }
+        })
+    }
+
+    function resetRewardDetail(){
+        var event_id = currentInfo.event_id;
+        currentInfo = {};
+        for(var i=0;i<rewardData.length;i++){
+            if(rewardData[i].event_id==event_id){
+                currentInfo = rewardData[i];
+            }
+        }
+        $("#popupContainer").show();
+        setRewardDetail(currentInfo);
+    }
+
+    //获取悬赏类型数据
+    function getRewardClass(){
+        $.ajax({
+            url: "getRewardClassData",
+            type: "POST",
+            data: {},
+            complete: function(){
+                
+            },
+            success: function(res){
+                console.log(res);
+                if(res.code=='0'){
+                    setRewardClassData(res.data);
+                }else{
+                    alerts.show({
+                        type: 'warning',
+                        title: "提示",
+                        content: res.msg,
+                        direction: 2000
+                    })
+                }
+            },
+            error: function(){
+                alert("获取数据失败！");
+            }
+        })
+    }
+
+    //设置悬赏分类单选框
+    function setRewardClassData(data){
+        $("#rewardTypeRadio").empty();
+
+        for(var i=0;i<data.length;i++){
+            var html = '<div class="radio">';
+                
+                html +=     '<label><input type="radio" name="rewardClass" value="'+data[i].id+'">'+data[i].value+'</label>';
+                html +='</div>';
+
+            $("#rewardTypeRadio").append(html);   
+        }
+    }
+
+    function setTableData(data,total){ //设置表格
+        $("#tableData").empty();
+        $("#pageContainer").empty();
+
+        for(var i=0;i<data.length;i++){
+            var line = '<tr>';
+                line +=     '<td class="td-over" title="'+data[i].event_title+'">'+data[i].event_title+'</td>';
+                line +=     '<td>'+data[i].event_type_name+'</td>';
+                line +=     '<td>'+data[i].event_reward+'</td>';
+                line +=     '<td>'+data[i].event_release_user+'</td>';
+                line +=     '<td>'+data[i].event_contact_phone+'</td>';
+                line +=     '<td>'+data[i].event_release_time+'</td>';
+                if(data[i].event_status==1){
+                    line +=     '<td><div class="badge badge-success">未接取</div></td>';
+                }else if(data[i].event_status==2){
+                    line +=     '<td><div class="badge badge-warning">进行中</div></td>';
+                }else if(data[i].event_status==3){
+                    line +=     '<td><div class="badge badge-secondary">已结束</div></td>';
+                }else if(data[i].event_status==4){
+                    line +=     '<td><div class="badge badge-danger">超时完结</div></td>';
+                }
+                line +=     '<td>';
+                line +=         '<a data-eventID="'+data[i].event_id+'" class="detail btn btn-action btn-secondary btn-info">详情</a>';
+                line +=         '<a data-eventID="'+data[i].event_id+'" class="delete btn btn-action btn-secondary btn-danger">删除</a>';
+                line +=     '</td>';
+                line += '</tr>';
+            $("#tableData").append(line);
+        }
+
+        for(var n=0; n<Number(total); n++){
+            var html = '';
+            if(n==0){
+                if(page==1){
+                    html += '<li id="prevPage" class="page-item disabled"><a class="page-link" tabindex="-1"><i class="ion ion-chevron-left"></i></a></li>';
+                }else{
+                    html += '<li id="prevPage" class="page-item"><a class="page-link" tabindex="-1"><i class="ion ion-chevron-left"></i></a></li>';
+                }
+            }
+            var nowPage = n+1;
+            if(page==nowPage){
+                html += '<li class="page-item page-number active" data-page="'+nowPage+'"><a class="page-link">'+nowPage+'</a></li>';
+            }else{
+                html += '<li class="page-item page-number" data-page="'+nowPage+'"><a class="page-link">'+nowPage+'</a></li>';
+            }
+            if(nowPage==total){
+                if(page==total){
+                    html += '<li id="nextPage" class="page-item disabled"><a class="page-link"><i class="ion ion-chevron-right"></i></a></li>';
+                }else{
+                    html += '<li id="nextPage" class="page-item"><a class="page-link"><i class="ion ion-chevron-right"></i></a></li>';
+                }
+            }
+            
+            $("#pageContainer").append(html);
+        }
+
+    }
+
+
+    function setRewardDetail(info){
+        console.log(info);
+        $("#rewardTitle").html(info.event_title);
+        $("#rewardDescribe").html(info.event_describe);
+        $("#rewardClass").html(info.event_type_name);
+        if(info.event_status==1){
+            $("#rewardStatus").html('<div class="badge badge-success">未接取</div>');
+        }else if(info.event_status==2){
+            $("#rewardStatus").html('<div class="badge badge-warning">进行中</div>');
+        }else if(info.event_status==3){
+            $("#rewardStatus").html('<div class="badge badge-secondary">已结束</div>');
+        }else if(info.event_status==4){
+            $("#rewardStatus").html('<div class="badge badge-danger">超时完结</div>');
+        }
+        $("#rewardUser").html(info.event_release_user);
+        $("#rewardContact").html(info.event_contacts);
+        $("#rewardContactPhone").html(info.event_contact_phone);
+        $("#rewardIntegral").html(info.event_reward);
+        $("#rewardAddress").html(info.event_address);
+        $("#rewardReleaseTime").html(info.event_release_time);
+        $("#rewardReceiveUser").html(info.event_receive_user);
+        $("#rewardReceiveTime").html(info.event_receive_time);
+        $("#rewardFinishTime").html(info.event_finist_time);
+
+        //修改框默认值
+        $("#rewardTitleInput").val(info.event_title);
+        $("#rewardDescribeInput").val(info.event_describe);
+        $("#rewardTypeRadio input[value='"+info.event_type+"']").prop('checked',true);
+        $("#rewardContactInput").val(info.event_contacts);
+        $("#rewardContactPhoneInput").val(info.event_contact_phone);
+        $("#rewardIntergralInput").val(info.event_reward);
+    }
+  </script>
+</body>
+</html>
